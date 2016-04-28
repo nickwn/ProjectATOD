@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package apcs.atod;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class MyGdxGame extends ApplicationAdapter {
+public class Game extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	
