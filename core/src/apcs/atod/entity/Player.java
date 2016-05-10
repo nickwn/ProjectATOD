@@ -1,7 +1,5 @@
 package apcs.atod.entity;
 
-import com.badlogic.gdx.*;
-
 public class Player extends Character
 {
 	private double speed;
