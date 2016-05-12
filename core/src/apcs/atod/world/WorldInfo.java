@@ -21,4 +21,12 @@ public class WorldInfo
 	{
 		return null;
 	}
+	
+	public Camera getCamera()
+	{
+		for(Entity e: entities)
+			if(e instanceof Camera)
+				return (Camera)e;
+		return null;
+	}
 }
