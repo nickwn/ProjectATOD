@@ -1,3 +1,4 @@
+
 package apcs.atod.entity;
 
 public class AI extends Character {
@@ -8,8 +9,9 @@ public class AI extends Character {
 	public AI(double s, double d) {
 		speed = s;
 		damage = d;
-		hp = EntityUtils.generateRandomNum(10); // random hitpoints generated
+		 // random hitpoints generated
 												// for each AI
 	}
 
 }
+

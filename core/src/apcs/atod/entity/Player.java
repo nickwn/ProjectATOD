@@ -1,3 +1,4 @@
+
 package apcs.atod.entity;
 
 public class Player extends Character {
@@ -11,3 +12,4 @@ public class Player extends Character {
 		hp = 10.0;
 	}
 }
+

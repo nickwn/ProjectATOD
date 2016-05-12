@@ -1,3 +1,4 @@
+
 package apcs.atod.entity;
 
 public class Camera extends Entity
@@ -12,3 +13,4 @@ public class Camera extends Entity
 		
 	}
 }
+

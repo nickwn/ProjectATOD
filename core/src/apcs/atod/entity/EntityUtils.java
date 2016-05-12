@@ -1,3 +1,4 @@
+
 package apcs.atod.entity;
 
 import com.badlogic.gdx.Gdx;
@@ -41,3 +42,4 @@ public final class EntityUtils {
 	}
 
 }
+
