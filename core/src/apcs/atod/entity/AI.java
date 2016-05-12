@@ -9,6 +9,7 @@ public class AI extends Character {
 	public AI(double s, double d) {
 		speed = s;
 		damage = d;
+		hp = 10;
 		 // random hitpoints generated
 												// for each AI
 	}
