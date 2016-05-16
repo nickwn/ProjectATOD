@@ -11,21 +11,12 @@ import apcs.atod.entity.*;
  */
 public class WorldInfo {
 	private ArrayList<Entity> entities;
-<<<<<<< HEAD
 
 	public ArrayList<Entity> getEntityList() {
 		return entities;
 	}
 
 	public Entity getInstanceOf(Class c) {
-=======
-	
-	public <T> T getInstanceOf()
-	{
-		for(Entity e: entities)
-			if(e instanceof ParameterizedType)
-				return (T)e;
->>>>>>> 7bd5d4b9a2c673aa75d2a1276f533a4b8e390dae
 		return null;
 	}
 
