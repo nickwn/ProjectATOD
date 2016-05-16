@@ -9,17 +9,10 @@ import apcs.atod.entity.*;
  * Class containing information about the world. Passed to all entities.
  *
  */
-public class WorldInfo 
-{
+public class WorldInfo {
 	private ArrayList<Entity> entities;
 	private Camera camera;
-	
-	public WorldInfo(ArrayList<Entity> entities, Camera camera)
-	{
-		this.entities = entities;
-		this.camera =  camera;
-	}
-	
+
 	public Entity getInstanceOf(Class c)
 	{
 		for(Entity e: entities)
@@ -36,7 +29,7 @@ public class WorldInfo
 				arr.add(e);
 		return arr;
 	}
-	
+
 	public ArrayList<Entity> getEntities()
 	{
 		return entities;
