@@ -1,5 +1,6 @@
 package apcs.atod.world;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 
 import apcs.atod.entity.*;
@@ -12,8 +13,11 @@ public class WorldInfo
 {
 	private ArrayList<Entity> entities;
 	
-	public Entity getInstanceOf(Class c)
+	public <T> T getInstanceOf()
 	{
+		for(Entity e: entities)
+			if(e instanceof ParameterizedType)
+				return (T)e;
 		return null;
 	}
 	
@@ -22,11 +26,24 @@ public class WorldInfo
 		return null;
 	}
 	
+	public ArrayList<Entity> getEntities()
+	{
+		return entities;
+	}
+	
 	public Camera getCamera()
 	{
 		for(Entity e: entities)
 			if(e instanceof Camera)
 				return (Camera)e;
+		return null;
+	}
+	
+	public Player getPlayer()
+	{
+		for(Entity e: entities)
+			if(e instanceof Player)
+				return (Player)e;
 		return null;
 	}
 }
