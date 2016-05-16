@@ -4,6 +4,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 
 import apcs.atod.entity.*;
+import apcs.atod.render.*;
 
 /**
  * Class containing information about the world. Passed to all entities.
