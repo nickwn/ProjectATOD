@@ -23,5 +23,6 @@ public abstract class Entity
 	public abstract void setup();
 	
 	public abstract void update();
+	// TODO Auto-generated method stub
 }
 
