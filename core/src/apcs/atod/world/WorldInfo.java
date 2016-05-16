@@ -12,18 +12,29 @@ import apcs.atod.entity.*;
 public class WorldInfo 
 {
 	private ArrayList<Entity> entities;
+	private Camera camera;
 	
-	public <T> T getInstanceOf()
+	public WorldInfo(ArrayList<Entity> entities, Camera camera)
+	{
+		this.entities = entities;
+		this.camera =  camera;
+	}
+	
+	public Entity getInstanceOf(Class c)
 	{
 		for(Entity e: entities)
-			if(e instanceof ParameterizedType)
-				return (T)e;
+			if(c.isInstance(e))
+				return e;
 		return null;
 	}
 	
-	public Entity getInstancesOf(Class c)
+	public ArrayList<Entity> getInstancesOf(Class c)
 	{
-		return null;
+		ArrayList<Entity> arr = new ArrayList<Entity>();
+		for(Entity e: entities)
+			if(c.isInstance(e))
+				arr.add(e);
+		return arr;
 	}
 	
 	public ArrayList<Entity> getEntities()
@@ -33,17 +44,7 @@ public class WorldInfo
 	
 	public Camera getCamera()
 	{
-		for(Entity e: entities)
-			if(e instanceof Camera)
-				return (Camera)e;
-		return null;
+		return camera;
 	}
 	
-	public Player getPlayer()
-	{
-		for(Entity e: entities)
-			if(e instanceof Player)
-				return (Player)e;
-		return null;
-	}
 }
