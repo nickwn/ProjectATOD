@@ -8,6 +8,7 @@ public class AI extends Entity {
 	private double speed;
 	private double damage;
 	private double hp;
+	private double rof;
 
 	public AI(double s, double d) {
 		speed = s;
@@ -26,6 +27,7 @@ public class AI extends Entity {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
+		
 		
 	}
 
