@@ -7,5 +7,5 @@ import apcs.atod.*;
  */
 public class HUDRenderer 
 {
-	
+	//TODO add gun, and sights
 }
