@@ -3,7 +3,9 @@ package apcs.atod.render;
 import apcs.atod.entity.Player;
 import apcs.atod.world.World;
 
+import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -14,7 +16,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  *
  */
 
-public class HUDRenderer {
+public class HUDRenderer implements ApplicationListener {
 
 	OrthographicCamera camera;
 	SpriteBatch spriteBatch;
@@ -22,22 +24,8 @@ public class HUDRenderer {
 	BitmapFont text;
 	String scoreText;
 	Player player;
+	boolean fail = false;
 	private int score;
-
-	public void draw() {
-		//for testing purposes
-		img = new Texture("hud-af.png");
-		camera = new OrthographicCamera(Gdx.graphics.getWidth(),
-				Gdx.graphics.getHeight());
-		camera.position.set(0, 0, 0);
-		// camera.near = 1f;
-		// camera.far = 300f;
-		camera.update();
-		spriteBatch.setProjectionMatrix(camera.combined);
-		spriteBatch.begin();
-		spriteBatch.draw(img, 0, 0);
-		spriteBatch.end();
-	}
 
 	public void genericTick(int param) {
 		switch (param) {
@@ -53,11 +41,10 @@ public class HUDRenderer {
 			spriteBatch.end();
 			break;
 		case 2: // send game over text
-			text = new BitmapFont();
-			scoreText = "GAMEOVER";
+			img = new Texture("game-over.png");
+			spriteBatch.setProjectionMatrix(camera.combined);
 			spriteBatch.begin();
-			text.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-			text.draw(spriteBatch, scoreText, 100, 100);
+			spriteBatch.draw(img, 0, 0);
 			spriteBatch.end();
 			break;
 		}
@@ -67,5 +54,61 @@ public class HUDRenderer {
 	public void setScore(int x) {
 		score += x;
 		genericTick(1);
+	}
+
+	@Override
+	public void create() {
+		//for testing purposes
+//		img = new Texture("hud-af.png");
+		camera = new OrthographicCamera(Gdx.graphics.getWidth(),
+				Gdx.graphics.getHeight());
+		camera.position.set(0, 0, 0);
+		// camera.near = 1f;
+		// camera.far = 300f;
+		camera.update();
+		spriteBatch.setProjectionMatrix(camera.combined);
+		spriteBatch.begin();
+//		spriteBatch.draw(img, 0, 0);
+		spriteBatch.end();		
+	}
+
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pause() {
+		if (Gdx.input.isButtonPressed(Input.Keys.ENTER)) {
+			resume();
+		}
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void render() {
+		if (Gdx.input.isButtonPressed(Input.Keys.ESCAPE)) {
+			pause();
+		}
+		if (fail == true) {
+			if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+				// TODO re-init game
+			}
+		}
+		
+	}
+
+	@Override
+	public void resize(int arg0, int arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+		
 	}
 }
