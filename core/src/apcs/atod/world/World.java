@@ -3,6 +3,8 @@ package apcs.atod.world;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 
 import apcs.atod.entity.*;
 import apcs.atod.render.*;
@@ -16,7 +18,6 @@ import apcs.atod.render.*;
 public class World {
 
 	private ArrayList<Entity> entities = new ArrayList<Entity>();
-
 	// private WorldInfo worldInfo;
 
 	// EntityRenderer entityRenderer;
@@ -39,7 +40,12 @@ public class World {
 
 	}
 
-	public void render() {
+	public void render() throws InterruptedException {
+		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT))
+				{
+				//call shoot
+				Thread.sleep((long) Player.getrof());
+				}
 		// TODO Auto-generated method stub
 
 	}

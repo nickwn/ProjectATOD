@@ -7,14 +7,19 @@ public class Player extends Entity {
 	private double speed;
 	private double damage;
 	private double hp;
+	private static double rof;
 
-	public Player(double s, double d) {
+	public Player(double s, double d, double rateoffire) {
+		rof = rateoffire;
 		speed = s;
 		damage = d;
 		hp = 10.0;
 	}
 
-	@Override
+	public static double getrof()
+	{
+		return rof;
+	}
 	public void setup() {
 		// TODO Auto-generated method stub
 		

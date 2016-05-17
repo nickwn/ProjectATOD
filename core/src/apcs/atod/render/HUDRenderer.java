@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  * Heads Up Display shows the crosshair, number of kills and health of player.
  *
  */
+
 public class HUDRenderer {
 
 	OrthographicCamera camera;
@@ -67,5 +68,4 @@ public class HUDRenderer {
 		score += x;
 		genericTick(1);
 	}
-
 }

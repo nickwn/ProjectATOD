@@ -4,7 +4,6 @@ import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 
 import apcs.atod.entity.*;
-import apcs.atod.render.*;
 
 /**
  * Class containing information about the world. Passed to all entities.
@@ -12,25 +11,19 @@ import apcs.atod.render.*;
  */
 public class WorldInfo {
 	private ArrayList<Entity> entities;
-	private Camera camera;
 
-	public Entity getInstanceOf(Class c)
-	{
-		for(Entity e: entities)
-			if(c.isInstance(e))
-				return e;
+	public ArrayList<Entity> getEntityList() {
+		return entities;
+	}
+
+	public Entity getInstanceOf(Class c) {
+		return null;
+	}
+
+	public Entity getInstancesOf(Class c) {
 		return null;
 	}
 	
-	public ArrayList<Entity> getInstancesOf(Class c)
-	{
-		ArrayList<Entity> arr = new ArrayList<Entity>();
-		for(Entity e: entities)
-			if(c.isInstance(e))
-				arr.add(e);
-		return arr;
-	}
-
 	public ArrayList<Entity> getEntities()
 	{
 		return entities;
@@ -38,7 +31,17 @@ public class WorldInfo {
 	
 	public Camera getCamera()
 	{
-		return camera;
+		for(Entity e: entities)
+			if(e instanceof Camera)
+				return (Camera)e;
+		return null;
 	}
 	
+	public Player getPlayer()
+	{
+		for(Entity e: entities)
+			if(e instanceof Player)
+				return (Player)e;
+		return null;
+	}
 }
