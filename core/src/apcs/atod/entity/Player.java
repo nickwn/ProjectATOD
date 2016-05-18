@@ -1,6 +1,7 @@
 package apcs.atod.entity;
 
 import com.badlogic.gdx.graphics.g3d.Model;
+import com.badlogic.gdx.math.Vector3;
 
 public class Player extends Entity {
 	static Model model = EntityUtils.loadModel("");
@@ -8,12 +9,16 @@ public class Player extends Entity {
 	private double damage;
 	private double hp;
 	private static double rof;
+	private double score;
+	
 
-	public Player(double s, double d, double rateoffire) {
+	public Player(double s, double d, double rateoffire, Vector3 initPos) {
 		rof = rateoffire;
 		speed = s;
 		damage = d;
 		hp = 10.0;
+		pos = initPos;
+		score = 0;
 	}
 
 	public static double getrof()
@@ -22,12 +27,32 @@ public class Player extends Entity {
 	}
 	public void setup() {
 		// TODO Auto-generated method stub
-		
+		setPosition(this.pos);
 	}
 
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public double getHealth()
+	{
+		return hp;
+	}
+	
+	public void removeHealth()
+	{
+		hp -= 1;
+	}
+	
+	public void addToScore()
+	{
+		score++;
+	}
+	
+	public double getScore()
+	{
+		return score;
 	}
 }

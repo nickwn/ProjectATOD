@@ -2,7 +2,7 @@ package apcs.atod.world;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
-
+import java.util.Iterator;
 import apcs.atod.entity.*;
 
 /**
@@ -17,11 +17,22 @@ public class WorldInfo {
 	}
 
 	public Entity getInstanceOf(Class c) {
-		return null;
+		int ind = entities.indexOf(c);
+		if (ind < 0)
+			return null;
+		return entities.get(ind);
 	}
 
-	public Entity getInstancesOf(Class c) {
-		return null;
+	public ArrayList<Entity> getInstancesOf(Class c) {
+		ArrayList<Entity> arr = new ArrayList<Entity>();
+		Iterator<Entity> iter = entities.iterator();
+		while (iter.hasNext())
+		{
+			Entity ent = iter.next();
+			if (ent instanceof c)
+				arr.add(ent);
+		}
+		return arr;
 	}
 	
 	public ArrayList<Entity> getEntities()
