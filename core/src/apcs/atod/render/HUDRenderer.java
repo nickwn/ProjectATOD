@@ -1,12 +1,14 @@
 package apcs.atod.render;
 
 import apcs.atod.entity.Player;
+
 import apcs.atod.world.World;
 
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -17,6 +19,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  * Heads Up Display shows the crosshair, number of kills and health of player.
  *
  */
+
 
 
 public class HUDRenderer {
@@ -30,6 +33,21 @@ public class HUDRenderer {
 	Player player;
 
 	private int score;
+	
+	public void init() {
+		//for testing purposes
+//		img = new Texture("hud-af.png");
+		camera = new OrthographicCamera(Gdx.graphics.getWidth(),
+				Gdx.graphics.getHeight());
+		camera.position.set(0, 0, 0);
+		// camera.near = 1f;
+		// camera.far = 300f;
+		camera.update();
+		spriteBatch.setProjectionMatrix(camera.combined);
+		spriteBatch.begin();
+//		spriteBatch.draw(img, 0, 0);
+		spriteBatch.end();	
+	}
 
 	public void draw() {
 		//for testing purposes
@@ -77,6 +95,7 @@ public class HUDRenderer {
 		score += x;
 		genericTick(1);
 	}
+
 
 
 	@Override
@@ -134,5 +153,6 @@ public class HUDRenderer {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }

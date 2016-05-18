@@ -19,6 +19,10 @@ public final class EntityUtils
 		ModelLoader loader = new ObjLoader();
        return loader.loadModel(Gdx.files.internal(name));
 	}
+	
+	public static void raycastHasHit() {
+		
+	}
 
 }
 
