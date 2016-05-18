@@ -26,7 +26,7 @@ public class AI extends Entity {
 	@Override
 	public void setup() {
 		// TODO Auto-generated method stub
-		
+		// hello
 		setPosition(this.pos);
 	}
 
