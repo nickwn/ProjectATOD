@@ -32,12 +32,23 @@ public class HUDRenderer {
 		// camera.near = 1f;
 		// camera.far = 300f;
 		camera.update();
+		img = new Texture("gun.png");
 		spriteBatch.setProjectionMatrix(camera.combined);
 		spriteBatch.begin();
+		spriteBatch.draw(img, 150, 0);
 //		spriteBatch.draw(img, 0, 0);
 		spriteBatch.end();	
 	}
 
+	public void genericTick() { //resend gun
+		img = new Texture("gun.png");
+		spriteBatch.setProjectionMatrix(camera.combined);
+		spriteBatch.begin();
+		spriteBatch.draw(img, 150, 0);
+//		spriteBatch.draw(img, 0, 0);
+		spriteBatch.end();	
+	}
+	
 	public void genericTick(int param) {
 		switch (param) {
 		case 1: // send score update
@@ -58,6 +69,16 @@ public class HUDRenderer {
 			spriteBatch.draw(img, 0, 0);
 			spriteBatch.end();
 			break;
+		case 3: // shooting
+			img = new Texture("shooting.png");
+			spriteBatch.setProjectionMatrix(camera.combined);
+			spriteBatch.begin();
+			spriteBatch.draw(img, 150, 0);
+			spriteBatch.end();
+			break;
+//		case 3: // check gun position
+//		
+//			break;
 		}
 
 	}
