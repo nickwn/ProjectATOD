@@ -1,7 +1,15 @@
 package apcs.atod.render;
 
 import apcs.atod.entity.Player;
+
+import apcs.atod.world.World;
+
+
+import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+
+
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -12,7 +20,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  *
  */
 
+
+
 public class HUDRenderer {
+
 
 	OrthographicCamera camera;
 	SpriteBatch spriteBatch;
@@ -20,7 +31,7 @@ public class HUDRenderer {
 	BitmapFont text;
 	String scoreText;
 	Player player;
-	boolean fail = false;
+
 	private int score;
 	
 	public void init() {
@@ -40,6 +51,7 @@ public class HUDRenderer {
 		spriteBatch.end();	
 	}
 
+//<<<<<<< HEAD
 	public void genericTick() { //resend gun
 		img = new Texture("gun.png");
 		spriteBatch.setProjectionMatrix(camera.combined);
@@ -49,6 +61,24 @@ public class HUDRenderer {
 		spriteBatch.end();	
 	}
 	
+//=======
+	public void draw() {
+		//for testing purposes
+		img = new Texture("hud-af.png");
+		camera = new OrthographicCamera(Gdx.graphics.getWidth(),
+				Gdx.graphics.getHeight());
+		camera.position.set(0, 0, 0);
+		// camera.near = 1f;
+		// camera.far = 300f;
+		camera.update();
+		spriteBatch.setProjectionMatrix(camera.combined);
+		spriteBatch.begin();
+		spriteBatch.draw(img, 0, 0);
+		spriteBatch.end();
+	}
+
+
+//>>>>>>> a11b5f78b1aa7e36462f29c4f97a58ceb303b0bc
 	public void genericTick(int param) {
 		switch (param) {
 		case 1: // send score update
@@ -63,10 +93,12 @@ public class HUDRenderer {
 			spriteBatch.end();
 			break;
 		case 2: // send game over text
+
 			img = new Texture("game-over.png");
 			spriteBatch.setProjectionMatrix(camera.combined);
 			spriteBatch.begin();
 			spriteBatch.draw(img, 0, 0);
+
 			spriteBatch.end();
 			break;
 		case 3: // shooting
@@ -87,4 +119,25 @@ public class HUDRenderer {
 		score += x;
 		genericTick(1);
 	}
+
+
+
+//	@Override
+//	public void create() {
+		//for testing purposes
+//		img = new Texture("hud-af.png");
+//		camera = new OrthographicCamera(Gdx.graphics.getWidth(),
+//				Gdx.graphics.getHeight());
+//		camera.position.set(0, 0, 0);
+		// camera.near = 1f;
+		// camera.far = 300f;
+//		camera.update();
+//		spriteBatch.setProjectionMatrix(camera.combined);
+//		spriteBatch.begin();
+//		spriteBatch.draw(img, 0, 0);
+//		spriteBatch.end();		
+//	}
+
+
+
 }
