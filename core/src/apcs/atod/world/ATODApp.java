@@ -14,7 +14,7 @@ public class ATODApp implements ApplicationListener {
 
 	public void create() {
 		World world = new World();
-		Player p = new Player(1, 1);
+		Player p = new Player(1.0, 1.0, 0.4);
 		world.addEntity(p);
 		p.setup();
 		for (int i = 0; i < 30; i++) {

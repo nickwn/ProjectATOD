@@ -23,5 +23,11 @@ public abstract class Entity
 	public abstract void setup();
 	
 	public abstract void update();
+	// TODO Auto-generated method stub
+	
+	public void setPosition(Vector3 newPos)
+	{
+		pos = newPos;
+	}
 }
 
