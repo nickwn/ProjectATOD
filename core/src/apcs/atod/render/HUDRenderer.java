@@ -23,7 +23,7 @@ public class HUDRenderer {
 		IMG(String path) {
 			myPath = path;
 		}
-		
+
 		public String getPath() {
 			return myPath;
 		}
@@ -66,27 +66,8 @@ public class HUDRenderer {
 		spriteBatch.end();
 	}
 
-	public void setScore(int x) { // sets internal score and updates overlay
-		score += x;
-		genericTick(1);
-	}
-
-	public void setHealth(int hp) { // sets internal health ad updates overlay
-		myHp = hp;
-		genericTick(4);
-	}
-
-	public void setShooting(boolean yes) { // switches state of gun, resends gun
-											// image
-		if (yes == true) {
-			genericTick(3);
-		} else {
-			genericTick();
-		}
-	}
-
 	public void genericTick(int param) { // main handler for sending information
-											// to game
+		// to game
 		switch (param) {
 		case 1: // send score update
 			text = new BitmapFont();
@@ -118,7 +99,25 @@ public class HUDRenderer {
 			spriteBatch.end();
 			break;
 		}
+	}
 
+	public void setScore(int x) { // sets internal score and updates overlay
+		score += x;
+		genericTick(1);
+	}
+
+	public void setHealth(int hp) { // sets internal health ad updates overlay
+		myHp = hp;
+		genericTick(4);
+	}
+
+	public void setShooting(boolean yes) { // switches state of gun, resends gun
+											// image
+		if (yes == true) {
+			genericTick(3);
+		} else {
+			genericTick();
+		}
 	}
 
 }
