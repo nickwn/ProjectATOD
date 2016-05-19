@@ -12,6 +12,7 @@ public class AI extends Entity
 	private double damage;
 	private double hp;
 	private double rof;
+	private Player target;
 	private Vector3 endPosition;
 
 	/*
@@ -76,6 +77,8 @@ public class AI extends Entity
 	private void flyTowardsPlayer()
 	{
 		// fly towards the player
+		
+		pos.lerp(pos.add(target.getPosition()), 1f);
 	}
 
 }
