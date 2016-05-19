@@ -12,6 +12,7 @@ public class Player extends Entity
 	private double hp;
 	private static double rof;
 	private double score;
+	private long time = System.nanoTime();
 	
 /*
 	public Player(double s, double d, double rateoffire, Vector3 initPos) 
@@ -63,5 +64,15 @@ public class Player extends Entity
 	public double getScore()
 	{
 		return score;
+	}
+	public boolean canfire()
+	{
+		if(System.nanoTime() + rof == time)
+		{
+			time = System.nanoTime();
+			return true;
+		}
+		else 
+			return false;
 	}
 }
