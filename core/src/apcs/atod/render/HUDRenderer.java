@@ -15,6 +15,20 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class HUDRenderer {
 
+	enum IMG {
+		GUN("gun.png"), GAME_OVER("game-over.png"), GUN_SHOOTING("shooting.png");
+
+		String myPath;
+
+		IMG(String path) {
+			myPath = path;
+		}
+		
+		public String getPath() {
+			return myPath;
+		}
+	}
+
 	OrthographicCamera camera;
 	SpriteBatch spriteBatch;
 	Texture img;
@@ -30,7 +44,7 @@ public class HUDRenderer {
 				Gdx.graphics.getHeight());
 		camera.position.set(0, 0, 0);
 		camera.update();
-		img = new Texture("gun.png");
+		img = new Texture(IMG.GUN.getPath());
 		spriteBatch.setProjectionMatrix(camera.combined);
 		spriteBatch.begin();
 		spriteBatch.draw(img, 150, 0);
@@ -45,7 +59,7 @@ public class HUDRenderer {
 	}
 
 	public void genericTick() { // resend gun
-		img = new Texture("gun.png");
+		img = new Texture(IMG.GUN.getPath());
 		spriteBatch.setProjectionMatrix(camera.combined);
 		spriteBatch.begin();
 		spriteBatch.draw(img, 150, 0);
@@ -83,14 +97,14 @@ public class HUDRenderer {
 			spriteBatch.end();
 			break;
 		case 2: // send game over text
-			img = new Texture("game-over.png");
+			img = new Texture(IMG.GAME_OVER.getPath());
 			spriteBatch.setProjectionMatrix(camera.combined);
 			spriteBatch.begin();
 			spriteBatch.draw(img, 0, 0);
 			spriteBatch.end();
 			break;
 		case 3: // shooting
-			img = new Texture("shooting.png");
+			img = new Texture(IMG.GUN_SHOOTING.getPath());
 			spriteBatch.setProjectionMatrix(camera.combined);
 			spriteBatch.begin();
 			spriteBatch.draw(img, 150, 0);
