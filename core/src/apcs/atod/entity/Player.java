@@ -1,6 +1,7 @@
 package apcs.atod.entity;
 
 import com.badlogic.gdx.graphics.g3d.Model;
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Vector3;
 
 public class Player extends Entity 
@@ -30,7 +31,7 @@ public class Player extends Entity
 	public void setup() 
 	{
 		// TODO Auto-generated method stub
-		setPosition(this.pos);
+		modelInstance = new ModelInstance(model, 0f,0f,0f);
 	}
 
 	public void update() 

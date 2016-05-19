@@ -2,6 +2,7 @@ package apcs.atod.entity;
 
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.*;
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
 
 public class AI extends Entity 
 {
@@ -30,7 +31,8 @@ public class AI extends Entity
 	{
 		// TODO Auto-generated method stub
 		// hello
-		setPosition(this.pos);
+		//change x y and z coordinates to whatever
+		modelInstance = new ModelInstance(model, 0f,0f,0f);
 	}
 	
 	public void dispose() 
@@ -57,11 +59,13 @@ public class AI extends Entity
 	private void die()
 	{
 		//fall to the ground
+		pos.lerp(new Vector3((pos.x / 2) - pos.x, 0 - pos.y, 0), 1f);
 	}
 	
 	private void dodge1()
 	{
 		// do cool dodge maneuver
+		
 	}
 	
 	private void dodge2()
