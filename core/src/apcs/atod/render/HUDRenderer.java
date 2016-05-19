@@ -51,7 +51,6 @@ public class HUDRenderer {
 		spriteBatch.end();	
 	}
 
-//<<<<<<< HEAD
 	public void genericTick() { //resend gun
 		img = new Texture("gun.png");
 		spriteBatch.setProjectionMatrix(camera.combined);
@@ -61,7 +60,6 @@ public class HUDRenderer {
 		spriteBatch.end();	
 	}
 	
-//=======
 	public void draw() {
 		//for testing purposes
 		img = new Texture("hud-af.png");
@@ -77,8 +75,6 @@ public class HUDRenderer {
 		spriteBatch.end();
 	}
 
-
-//>>>>>>> a11b5f78b1aa7e36462f29c4f97a58ceb303b0bc
 	public void genericTick(int param) {
 		switch (param) {
 		case 1: // send score update

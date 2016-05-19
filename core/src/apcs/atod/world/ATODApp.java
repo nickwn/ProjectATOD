@@ -2,6 +2,12 @@ package apcs.atod.world;
 
 import apcs.atod.entity.AI;
 import apcs.atod.entity.Player;
+import apcs.atod.render.Camera;
+import apcs.atod.render.EntityRenderer;
+import apcs.atod.render.HUDRenderer;
+import apcs.atod.entity.Entity;
+
+import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationListener;
 
@@ -10,41 +16,47 @@ import com.badlogic.gdx.ApplicationListener;
  * interface.
  *
  */
-public class ATODApp implements ApplicationListener {
+public class ATODApp implements ApplicationListener 
+{
+	private World world;
 
-	public void create() {
-		World world = new World();
-		Player p = new Player(1.0, 1.0, 0.4);
-		world.addEntity(p);
-		p.setup();
-		for (int i = 0; i < 30; i++) {
-			AI bots = new AI(1, 1);
-			world.addEntity(bots);
-			bots.setup();
-		}
+	public void create()
+	{
+		world = new World();
+		
+		ArrayList<Entity> entities = new ArrayList<Entity>();
+		entities.add(new Player());
+		for(int i = 0; i < 5; i++)
+			entities.add(new AI());
+		
+		world.create(entities, new EntityRenderer(), new HUDRenderer(), new Camera());
+	}
+
+	public void render() 
+	{
 
 	}
 
-	public void render() {
-
-	}
-
-	public void dispose() {
+	public void dispose() 
+	{
 		// TODO Auto-generated method stub
 
 	}
 
-	public void pause() {
+	public void pause() 
+	{
 		// TODO Auto-generated method stub
 
 	}
 
-	public void resize(int arg0, int arg1) {
+	public void resize(int arg0, int arg1) 
+	{
 		// TODO Auto-generated method stub
 
 	}
 
-	public void resume() {
+	public void resume() 
+	{
 		// TODO Auto-generated method stub
 
 	}

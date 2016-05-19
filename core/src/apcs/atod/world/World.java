@@ -17,20 +17,17 @@ import apcs.atod.render.*;
  */
 public class World {
 
-	private ArrayList<Entity> entities = new ArrayList<Entity>();
-	// private WorldInfo worldInfo;
+	private ArrayList<Entity> entities;
+	private WorldInfo worldInfo;
+	private EntityRenderer entityRenderer;
+	private HUDRenderer hudRenderer;
 
-	// EntityRenderer entityRenderer;
-
-	public void addEntity(Entity e) {
-		entities.add(e);
-	}
-	
-	public void addPlayer()
+	public World()
 	{
-		entities.add(new Player(1, 1, 1,new Vector3(0,0,0)));
+		
 	}
 	
+	/*
 	public void removeEntity()
 	{
 		for (Entity e : entities)
@@ -41,43 +38,69 @@ public class World {
 				entities.remove(e); //also do end screen, murder the player in cold blood
 		}
 	}
+	 */
+	
+	public void create(ArrayList<Entity> ents, EntityRenderer er, HUDRenderer hr, Camera camera) 
+	{
+		entities = ents;
+		entityRenderer = er;
+		hudRenderer = hr;
+		
+		worldInfo = new WorldInfo(entities, hudRenderer, camera);
+		
+		for(Entity ent: entities)
+			ent.setup();
+		
+		er.setup(worldInfo);
+		hr.init();
+	}
 
-	public void create() {
+	public void dispose() 
+	{
+		entityRenderer.dispose();
+		for(Entity ent: entities)
+			ent.dispose();
 
 	}
 
-	public void dispose() {
+	public void pause() 
+	{
 		// TODO Auto-generated method stub
 
 	}
 
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void render() throws InterruptedException {
+	public void render()
+	{
+		entityRenderer.render();
+		
+		//loop through all the entities
+		//if player and dead:
+		//	if hudRenderer.retryScreen() (non-blocking function - don't wait for input to continue, returns true if space pressed)
+		//		reset world (re-setup entities, renderers, etc)
+		//else if ai and dead:
+		//	entities.remove current index
+		//else
+		//	update
+		
+		/*
 		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT))
-				{
-				//call shoot
-				Thread.sleep((long) Player.getrof());
-				}
+		{
+			//call shoot
+			Thread.sleep((long) Player.getrof());
+		}
+		*/
+	}
+
+	public void resize(int arg0, int arg1) 
+	{
 		// TODO Auto-generated method stub
 
 	}
 
-	public void resize(int arg0, int arg1) {
+	public void resume() 
+	{
 		// TODO Auto-generated method stub
 
-	}
-
-	public void resume() {
-		// TODO Auto-generated method stub
-
-	}
-
-	public ArrayList<Entity> getEntityList() {
-		return entities;
 	}
 
 }

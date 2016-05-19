@@ -23,7 +23,7 @@ public class EntityRenderer
 	private WorldInfo worldInfo;
 	private ModelBatch modelBatch;
 	private Environment environment;
-	private PerspectiveCamera camera;
+	private Camera camera;
 	
 	/**
 	 * Sets up the renderer. Entities must be setup and initialized before this is called
@@ -37,18 +37,9 @@ public class EntityRenderer
 		environment = new Environment();
 		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
 	    environment.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
-<<<<<<< HEAD
+
 	    camera = worldInfo.getCamera();
 		camera.setup();
-=======
-		
-		camera = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		camera.position.set(worldInfo.getCamera().getPosition());
-        camera.near = 1f;
-        camera.far = 300f;
-        camera.update();
-		
->>>>>>> 661e34c586e1ab03beb22d10a04131a3609f90f8
 		
 	}
 	
@@ -60,8 +51,13 @@ public class EntityRenderer
         for(Entity ent: worldInfo.getEntities())
         	entArr.add(ent.getModelInstance());
 
-        modelBatch.begin(camera);
+        modelBatch.begin(camera.getPerspectiveCamera());
         modelBatch.render(entArr, environment);
         modelBatch.end();
+	}
+	
+	public void dispose()
+	{
+		modelBatch.dispose();
 	}
 }

@@ -4,33 +4,41 @@ import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.Iterator;
 import apcs.atod.entity.*;
+import apcs.atod.render.Camera;
+import apcs.atod.render.HUDRenderer;
 
 /**
  * Class containing information about the world. Passed to all entities.
  *
  */
-public class WorldInfo {
+public class WorldInfo 
+{
 	private ArrayList<Entity> entities;
+	private HUDRenderer hud;
+	private Camera camera;
 
-	public ArrayList<Entity> getEntityList() {
-		return entities;
+	public WorldInfo(ArrayList<Entity> entities, HUDRenderer hud, Camera camera)
+	{
+		this.entities = entities;
+		this.hud = hud;
+		this.camera = camera;
 	}
 
-	public Entity getInstanceOf(Class c) {
-		int ind = entities.indexOf(c);
-		if (ind < 0)
-			return null;
-		return entities.get(ind);
+	public Entity getInstanceOf(Class c) 
+	{
+		for(Entity ent: entities)
+			if(c.isInstance(ent))
+				return ent;
+		return null;
 	}
 
-	public ArrayList<Entity> getInstancesOf(Class c) {
+	public ArrayList<Entity> getInstancesOf(Class<?> c) 
+	{
 		ArrayList<Entity> arr = new ArrayList<Entity>();
-		Iterator<Entity> iter = entities.iterator();
-		while (iter.hasNext())
+		for(Entity ent: entities)
 		{
-			Entity ent = iter.next();
-			if (ent instanceof c)
-				arr.add(ent);
+			if(c.isInstance(ent));
+			arr.add(ent);
 		}
 		return arr;
 	}
@@ -42,17 +50,6 @@ public class WorldInfo {
 	
 	public Camera getCamera()
 	{
-		for(Entity e: entities)
-			if(e instanceof Camera)
-				return (Camera)e;
-		return null;
-	}
-	
-	public Player getPlayer()
-	{
-		for(Entity e: entities)
-			if(e instanceof Player)
-				return (Player)e;
-		return null;
+		return camera;
 	}
 }

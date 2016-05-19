@@ -22,7 +22,7 @@ public class Camera
         Gdx.input.setInputProcessor(camController);
 	}
 	
-	public PerspectiveCamera getCamera()
+	public PerspectiveCamera getPerspectiveCamera()
 	{
 		return camera;
 	}

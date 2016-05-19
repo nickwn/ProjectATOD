@@ -27,11 +27,18 @@ public class Landscape extends Entity
 		
 		modelInstance.nodes.removeIndex(0);
 		modelInstance.nodes.add(parent);
+		
+		modelInstance.calculateTransforms();
 	}
 
 	public void update() 
 	{
 		
+	}
+	
+	public void dispose()
+	{
+		model.dispose();
 	}
 	
 	 private static <T> T cloneObject(T obj)
