@@ -17,7 +17,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class HUDRenderer {
 
 	enum IMG {
-		GUN("gun.png"), GAME_OVER("game-over.png"), GUN_SHOOTING("shooting.png");
+		GUN("core/assets/img/gun.png"), GAME_OVER(
+				"core/assets/img/game-over.png"), GUN_SHOOTING(
+				"core/assets/img/shooting.png");
 
 		String myPath;
 
@@ -38,7 +40,7 @@ public class HUDRenderer {
 	Player player;
 	int myHp;
 	boolean shooting, fail;
-	
+
 	private int score;
 
 	public void init() { // sets up HUD
@@ -60,7 +62,7 @@ public class HUDRenderer {
 		spriteBatch.end();
 	}
 
-	public void genericTick() { 
+	public void genericTick() {
 		spriteBatch.setProjectionMatrix(camera.combined);
 		spriteBatch.begin();
 		if (fail == true) {
@@ -68,12 +70,12 @@ public class HUDRenderer {
 			spriteBatch.end();
 		}
 		if (shooting == false) {
-		img = new Texture(IMG.GUN.getPath());
-		spriteBatch.draw(img, 150, 0);
+			img = new Texture(IMG.GUN.getPath());
+			spriteBatch.draw(img, 150, 0);
 		} else {
-		img = new Texture(IMG.GUN_SHOOTING.getPath());
-//		spriteBatch.setProjectionMatrix(camera.combined);
-		spriteBatch.draw(img, 0, 0);
+			img = new Texture(IMG.GUN_SHOOTING.getPath());
+			// spriteBatch.setProjectionMatrix(camera.combined);
+			spriteBatch.draw(img, 0, 0);
 		}
 		scoreText = "score: " + score;
 		text.setColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -85,24 +87,24 @@ public class HUDRenderer {
 	}
 
 	public boolean retryScreen() {
-//		img = new Texture(IMG.GAME_OVER.getPath());
+		// img = new Texture(IMG.GAME_OVER.getPath());
 		fail = true;
 		if (Gdx.input.isButtonPressed(Input.Keys.SPACE)) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public void setScore(int x) { // sets internal score and updates overlay
 		score += x;
-//		genericTick(1);
+		// genericTick(1);
 	}
 
 	public void setHealth(int hp) { // sets internal health ad updates overlay
 		myHp = hp;
-//		genericTick(4);
+		// genericTick(4);
 	}
-	
+
 	public void setShooting(boolean logic) {
 		shooting = logic;
 	}
