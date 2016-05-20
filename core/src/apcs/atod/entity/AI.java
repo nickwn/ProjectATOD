@@ -74,11 +74,16 @@ public class AI extends Entity
 		//do cool dodge maneuver
 	}
 	
+	private void doABarrelRoll()
+	{
+		//model.transform.setToRotation(Vector3.X, 0.12f);
+	}
+	
 	private void flyTowardsPlayer()
 	{
 		// fly towards the player
 		
-		pos.lerp(pos.add(target.getPosition()), 1f);
+		pos.lerp(pos.add(target.getPosition()), 1f); //change to where we will actually put player
 	}
 
 }
