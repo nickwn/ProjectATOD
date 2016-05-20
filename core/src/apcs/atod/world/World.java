@@ -6,6 +6,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector3;
+
 import apcs.atod.entity.*;
 import apcs.atod.render.*;
 
@@ -21,6 +22,7 @@ public class World {
 	private WorldInfo worldInfo;
 	private EntityRenderer entityRenderer;
 	private HUDRenderer hudRenderer;
+	private Camera camera;
 
 	public World()
 	{
@@ -40,19 +42,43 @@ public class World {
 	}
 	 */
 	
-	public void create(ArrayList<Entity> ents, EntityRenderer er, HUDRenderer hr, Camera camera) 
+	private void setupWorld()
 	{
-		entities = ents;
-		entityRenderer = er;
-		hudRenderer = hr;
+		entities = new ArrayList<Entity>();
+		entities.add(new Player());
+		for(int i = 0; i < 5; i++)
+			entities.add(new AI());
+		
+		entityRenderer = new EntityRenderer();
+		hudRenderer = new HUDRenderer();
+		camera = new Camera();
 		
 		worldInfo = new WorldInfo(entities, hudRenderer, camera);
 		
 		for(Entity ent: entities)
+		{
+			ent.setWorldInfo(worldInfo);
 			ent.setup();
+		}
 		
-		er.setup(worldInfo);
-		hr.init();
+		entityRenderer.setup(worldInfo);
+		hudRenderer.init();
+	}
+	
+	private void addAIs()
+	{
+		for(int i = 0; i < 5; i++)
+		{
+			AI temp = new AI();
+			temp.setup();
+			temp.setWorldInfo(worldInfo);
+			entities.add(new AI());
+		}
+	}
+	
+	public void create() 
+	{
+		setupWorld();
 	}
 
 	public void dispose() 
@@ -71,7 +97,7 @@ public class World {
 
 	public void render()
 	{
-		entityRenderer.render();
+		
 		
 		//loop through all the entities
 		//if player and dead:
@@ -82,13 +108,32 @@ public class World {
 		//else
 		//	update
 		
-		/*
-		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT))
+		
+		int AICount = 0;
+		for(int i = 0; i < entities.size(); i++)
 		{
-			//call shoot
-			Thread.sleep((long) Player.getrof());
+			if(entities.get(i) instanceof Player && ((Player)entities.get(i)).getHealth() <= 0)
+				if (hudRenderer.retryScreen())
+					setupWorld();
+			else if(entities.get(i) instanceof AI)
+			{
+				AICount++;
+				if(((AI)entities.get(i)).getHealth() <= 0)
+					entities.get(i).dispose();
+					entities.remove(i);
+					i--;
+			}
+			else
+				entities.get(i).update();
+				
 		}
-		*/
+		
+		if(AICount == 0)
+			addAIs();
+		
+		
+		hudRenderer.genericTick();
+		entityRenderer.render();
 	}
 
 	public void resize(int arg0, int arg1) 

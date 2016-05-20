@@ -24,6 +24,11 @@ public abstract class Entity
 		pos = newPos;
 	}
 	
+	public void setWorldInfo(WorldInfo worldInfo)
+	{
+		this.worldInfo = worldInfo;
+	}
+	
 	public Vector3 getPosition()
 	{
 		return pos;

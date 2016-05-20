@@ -23,23 +23,17 @@ public class ATODApp implements ApplicationListener
 	public void create()
 	{
 		world = new World();
-		
-		ArrayList<Entity> entities = new ArrayList<Entity>();
-		entities.add(new Player());
-		for(int i = 0; i < 5; i++)
-			entities.add(new AI());
-		
-		world.create(entities, new EntityRenderer(), new HUDRenderer(), new Camera());
+		world.create();
 	}
 
 	public void render() 
 	{
-
+		world.render();
 	}
 
 	public void dispose() 
 	{
-		// TODO Auto-generated method stub
+		world.dispose();
 
 	}
 
