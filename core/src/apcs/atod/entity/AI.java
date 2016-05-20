@@ -3,6 +3,7 @@ package apcs.atod.entity;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import java.util.*;
 
 public class AI extends Entity 
 {
@@ -34,6 +35,13 @@ public class AI extends Entity
 		// hello
 		//change x y and z coordinates to whatever
 		modelInstance = new ModelInstance(model, 0f,0f,0f);
+		speed = Math.random() * 5;
+		damage = 1;
+		hp = Math.random() * 10;
+		rof = 1;
+		pos = new Vector3(1f, 1f, 1f); //will fix this later
+		endPosition = new Vector3(-1f, -1f, -1f); //same
+		//target = worldInfo.getInstanceOf(Player);
 	}
 	
 	public void dispose() 

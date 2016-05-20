@@ -33,6 +33,11 @@ public class Player extends Entity
 	{
 		// TODO Auto-generated method stub
 		modelInstance = new ModelInstance(model, 0f,0f,0f);
+		speed = Math.random() * 5;
+		damage = 1;
+		hp = 10;
+		rof = 1;
+		pos = new Vector3(1f, 1f, 1f); //will fix this later
 	}
 
 	public void update() 
