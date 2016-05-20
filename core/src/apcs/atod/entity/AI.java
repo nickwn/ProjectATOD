@@ -12,6 +12,7 @@ public class AI extends Entity
 	private double damage;
 	private double hp;
 	private double rof;
+	private Player target;
 	private Vector3 endPosition;
 
 	/*
@@ -73,9 +74,16 @@ public class AI extends Entity
 		//do cool dodge maneuver
 	}
 	
+	private void doABarrelRoll()
+	{
+		//model.transform.setToRotation(Vector3.X, 0.12f);
+	}
+	
 	private void flyTowardsPlayer()
 	{
 		// fly towards the player
+		
+		pos.lerp(pos.add(target.getPosition()), 1f); //change to where we will actually put player
 	}
 
 }
