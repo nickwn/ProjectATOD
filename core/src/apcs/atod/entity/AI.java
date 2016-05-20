@@ -84,7 +84,7 @@ public class AI extends Entity
 	
 	private void doABarrelRoll()
 	{
-		//model.transform.setToRotation(Vector3.X, 0.12f);
+		modelInstance.transform.setToRotation(Vector3.X, 0.12f);
 	}
 	
 	private void flyTowardsPlayer()
