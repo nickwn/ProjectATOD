@@ -45,9 +45,12 @@ public class World {
 	private void setupWorld()
 	{
 		entities = new ArrayList<Entity>();
-		entities.add(new Player());
-		for(int i = 0; i < 5; i++)
-			entities.add(new AI());
+		entities.add(new Player(Vector3.Zero));
+		entities.add(new Landscape(new Vector3(0, -1000, 0)));
+		for(int i = 0; i < 3; i++)
+		{
+			entities.add(new AI(new Vector3((i-1)*300, 0, -700)));
+		}
 		
 		entityRenderer = new EntityRenderer();
 		hudRenderer = new HUDRenderer();
@@ -61,18 +64,20 @@ public class World {
 			ent.setup();
 		}
 		
-		entityRenderer.setup(worldInfo);
+		//entityRenderer.setup(worldInfo);
 		hudRenderer.init();
+		entityRenderer.setup(worldInfo);
 	}
 	
 	private void addAIs()
 	{
 		for(int i = 0; i < 5; i++)
 		{
-			AI temp = new AI();
+			Vector3 pos = new Vector3((i-3)*10, 0, -20);
+			AI temp = new AI(pos);
 			temp.setup();
 			temp.setWorldInfo(worldInfo);
-			entities.add(new AI());
+			entities.add(temp);
 		}
 	}
 	
@@ -86,6 +91,7 @@ public class World {
 		entityRenderer.dispose();
 		for(Entity ent: entities)
 			ent.dispose();
+		EntityUtils.dispose();
 
 	}
 
@@ -110,30 +116,40 @@ public class World {
 		
 		
 		int AICount = 0;
+		
 		for(int i = 0; i < entities.size(); i++)
 		{
+			/*
 			if(entities.get(i) instanceof Player && ((Player)entities.get(i)).getHealth() <= 0)
+			{
 				if (hudRenderer.retryScreen())
+				{
+					entityRenderer.dispose();
+					for(Entity ent: entities)
+						ent.dispose();
 					setupWorld();
+				}
+			}
 			else if(entities.get(i) instanceof AI)
 			{
 				AICount++;
 				if(((AI)entities.get(i)).getHealth() <= 0)
-					entities.get(i).dispose();
 					entities.remove(i);
 					i--;
 			}
-			else
-				entities.get(i).update();
+			*/
+			entities.get(i).update();
 				
 		}
-		
+		/*
 		if(AICount == 0)
+		{
 			addAIs();
-		
-		
-		hudRenderer.genericTick();
+		}
+		*/
+
 		entityRenderer.render();
+		hudRenderer.genericTick();
 	}
 
 	public void resize(int arg0, int arg1) 

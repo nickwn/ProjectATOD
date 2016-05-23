@@ -44,22 +44,24 @@ public class HUDRenderer {
 	private int score;
 
 	public void init() { // sets up HUD
+		spriteBatch = new SpriteBatch();
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight());
 		camera.position.set(0, 0, 0);
-		camera.update();
+		
 		img = new Texture(IMG.GUN.getPath());
 		spriteBatch.setProjectionMatrix(camera.combined);
 		spriteBatch.begin();
-		spriteBatch.draw(img, 150, 0);
+		spriteBatch.draw(img, -145, -240);
 		spriteBatch.end();
 		text = new BitmapFont();
 		scoreText = "health: " + myHp;
 		spriteBatch.begin();
 		text.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-		text.draw(spriteBatch, scoreText, 0, 100);
-		text.draw(spriteBatch, "health: " + 10, 25, 75);
+		text.draw(spriteBatch, scoreText, -300, 230);
+		text.draw(spriteBatch, "health: " + 10, 230, 230);
 		spriteBatch.end();
+		camera.update();
 	}
 
 	public void genericTick() {
@@ -71,7 +73,7 @@ public class HUDRenderer {
 		}
 		if (shooting == false) {
 			img = new Texture(IMG.GUN.getPath());
-			spriteBatch.draw(img, 150, 0);
+			spriteBatch.draw(img, -145, -240);
 		} else {
 			img = new Texture(IMG.GUN_SHOOTING.getPath());
 			// spriteBatch.setProjectionMatrix(camera.combined);
@@ -79,10 +81,10 @@ public class HUDRenderer {
 		}
 		scoreText = "score: " + score;
 		text.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-		text.draw(spriteBatch, scoreText, 25, 100);
+		text.draw(spriteBatch, scoreText, -300, 230);
 		text = new BitmapFont();
 		text.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-		text.draw(spriteBatch, "health: " + myHp, 0, 100);
+		text.draw(spriteBatch, "health: " + myHp, 230, 230);
 		spriteBatch.end();
 	}
 

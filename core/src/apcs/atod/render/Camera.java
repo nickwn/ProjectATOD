@@ -13,12 +13,13 @@ public class Camera
 	public void setup()
 	{
 		camera = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		camera.position.set(0,0,0);
+		camera.position.set(0,10,-10);
         camera.near = 1f;
-        camera.far = 300f;
+        camera.far = 9000f;
         camera.update();
         
         camController = new CameraInputController(camera);
+        camController.target.set(camera.position);
         Gdx.input.setInputProcessor(camController);
 	}
 	
@@ -30,6 +31,11 @@ public class Camera
 	public void update()
 	{
 		camController.update();
+	}
+	
+	public void setPosition(Vector3 to)
+	{
+		camera.position.set(to);
 	}
 	
 	public Vector3 getDirection()

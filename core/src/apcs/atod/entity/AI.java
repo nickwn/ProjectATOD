@@ -8,14 +8,21 @@ import java.util.*;
 public class AI extends Entity 
 {
 
-	static Model model = EntityUtils.loadModel("core/assets/repeatinglandscape/repeatinglandscape.g3db");
+	
+
+	public static Model model = EntityUtils.loadModel("core/assets/fighterplane/fighterplane.g3db");
 	private double speed;
 	private double damage;
 	private double hp;
 	private double rof;
 	private Player target;
 	private Vector3 endPosition;
-
+	
+	public AI(Vector3 pos) 
+	{
+		super(pos);
+		// TODO Auto-generated constructor stub
+	}
 	/*
 	public AI(double s, double d, Vector3 initPos, Vector3 endPos) {
 		
@@ -34,25 +41,26 @@ public class AI extends Entity
 		// TODO Auto-generated method stub
 		// hello
 		//change x y and z coordinates to whatever
-		modelInstance = new ModelInstance(model, 0f,0f,0f);
+		modelInstance = new ModelInstance(model, pos);
 		speed = Math.random() * 5;
 		damage = 1;
 		hp = Math.random() * 10;
 		rof = 1;
-		pos = new Vector3(1f, 1f, 1f); //will fix this later
+		//pos = new Vector3(1f, 1f, 1f); //will fix this later
 		endPosition = new Vector3(-1f, -1f, -1f); //same
 		//target = worldInfo.getInstanceOf(Player);
-	}
-	
-	public void dispose() 
-	{
-		model.dispose();
 	}
 	
 	public void update() 
 	{
 		
 		// this.getPosition().lerp(endPosition, 1f);
+	}
+	
+	public void dispose()
+	{
+		if(worldInfo.getInstancesOf(AI.class).size()==1)
+			model.dispose();
 	}
 	
 	public double getHealth()

@@ -24,6 +24,7 @@ public class EntityRenderer
 	private ModelBatch modelBatch;
 	private Environment environment;
 	private Camera camera;
+	private Array<ModelInstance> modelArr = new Array<ModelInstance>(0);
 	
 	/**
 	 * Sets up the renderer. Entities must be setup and initialized before this is called
@@ -35,11 +36,16 @@ public class EntityRenderer
 		
 		modelBatch = new ModelBatch();
 		environment = new Environment();
-		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
-	    environment.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
+		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, .8f, .8f, 1f, 1f));
+		DirectionalLight dLight = new DirectionalLight().set(.8f, .8f, .8f, -1f, -0.8f, -0.2f);
+		dLight.color.set(.8f, .8f, .8f, .1f);
+	    environment.add(dLight);
 
 	    camera = worldInfo.getCamera();
 		camera.setup();
+		
+		for(Entity ent: worldInfo.getEntities())
+        	modelArr.add(ent.getModelInstance());
 		
 	}
 	
@@ -47,17 +53,16 @@ public class EntityRenderer
 	{
 		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-        Array<ModelInstance> entArr = new Array<ModelInstance>();
-        for(Entity ent: worldInfo.getEntities())
-        	entArr.add(ent.getModelInstance());
-
+        
+        //modelArr.truncate(worldInfo..size());
         modelBatch.begin(camera.getPerspectiveCamera());
-        modelBatch.render(entArr, environment);
+        modelBatch.render(modelArr, environment);
         modelBatch.end();
 	}
 	
 	public void dispose()
 	{
 		modelBatch.dispose();
+		modelArr.clear();
 	}
 }

@@ -50,6 +50,11 @@ public final class EntityUtils {
 		}
 		return null;
 	}
+	
+	public static void dispose()
+	{
+		assets.dispose();
+	}
 
 	/**
 	 * public static boolean raycastHasHit(float x1, float y1, float x2, float

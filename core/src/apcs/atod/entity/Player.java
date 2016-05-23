@@ -25,6 +25,13 @@ public class Player extends Entity
 		score = 0;
 	}
 */
+	
+	public Player(Vector3 pos) 
+	{
+		super(pos);
+		// TODO Auto-generated constructor stub
+	}
+	
 	public static double getrof()
 	{
 		return rof;
@@ -32,12 +39,12 @@ public class Player extends Entity
 	public void setup() 
 	{
 		// TODO Auto-generated method stub
-		modelInstance = new ModelInstance(model, 0f,0f,0f);
+		modelInstance = new ModelInstance(model, pos);
 		speed = Math.random() * 5;
 		damage = 1;
 		hp = 10;
 		rof = 1;
-		pos = new Vector3(1f, 1f, 1f); //will fix this later
+		//pos = new Vector3(1f, 1f, 1f); //will fix this later
 	}
 
 	public void update() 
