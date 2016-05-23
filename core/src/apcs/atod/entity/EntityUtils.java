@@ -7,8 +7,10 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.ModelLoader;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.loader.ObjLoader;
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.BoundingBox;
+import com.badlogic.gdx.math.collision.Ray;
 
 public final class EntityUtils {
 	private static AssetManager assets = new AssetManager();
@@ -38,21 +40,19 @@ public final class EntityUtils {
 
 	public static Entity raycastHasHit(Vector3 pos, Vector3 direction,
 			ArrayList<Entity> entity) {
-		BoundingBox ray = new BoundingBox(pos, direction);
+		Ray ray = new Ray(pos, direction);
 		for (Entity e : entity) {
-			// ok i go
 			BoundingBox out = new BoundingBox();
-			e.getModelInstance().model.calculateBoundingBox(out);
-			if (out.intersects(ray)) {
+			if (Intersector.intersectRayBoundsFast(ray,
+					e.getModelInstance().model.calculateBoundingBox(out))) {
 				return e;
 			}
-//			e.getModelInstance().model.calculateBoundingBox();
+			// e.getModelInstance().model.calculateBoundingBox();
 		}
 		return null;
 	}
-	
-	public static void dispose()
-	{
+
+	public static void dispose() {
 		assets.dispose();
 	}
 
