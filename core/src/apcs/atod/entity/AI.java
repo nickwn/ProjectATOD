@@ -22,6 +22,8 @@ public class AI extends Entity
 	{
 		super(pos);
 		// TODO Auto-generated constructor stub
+		//doABarrelRoll();
+		//flyTowardsPlayer();
 	}
 	/*
 	public AI(double s, double d, Vector3 initPos, Vector3 endPos) {
@@ -55,6 +57,7 @@ public class AI extends Entity
 	{
 		
 		// this.getPosition().lerp(endPosition, 1f);
+		die();
 	}
 	
 	public void dispose()
@@ -76,7 +79,9 @@ public class AI extends Entity
 	private void die()
 	{
 		//fall to the ground
-		pos.lerp(new Vector3((pos.x / 2) - pos.x, 0 - pos.y, 0), 1f);
+		//pos.lerp(new Vector3((pos.x / 2) - pos.x, 0 - pos.y, 0), 1f);
+		//get x, y, and z values and use in Matrix4
+		modelInstance.transform.translate(new Vector3(0f, -10f, 10f));
 	}
 	
 	private void dodge1()
@@ -98,8 +103,8 @@ public class AI extends Entity
 	private void flyTowardsPlayer()
 	{
 		// fly towards the player
-		
-		pos.lerp(pos.add(target.getPosition()), 1f); //change to where we will actually put player
+		modelInstance.transform.translate(new Vector3(0f, 0f, 10f));
+		//pos.lerp(pos.add(target.getPosition()), 1f); //change to where we will actually put player
 	}
 
 }

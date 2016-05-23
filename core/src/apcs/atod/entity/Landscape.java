@@ -50,7 +50,7 @@ public class Landscape extends Entity
 
 	public void update() 
 	{
-		
+		modelInstance.transform.translate(new Vector3(0,0,-10));
 	}
 	
 	public void dispose()

@@ -67,6 +67,7 @@ public class World {
 		//entityRenderer.setup(worldInfo);
 		hudRenderer.init();
 		entityRenderer.setup(worldInfo);
+		
 	}
 	
 	private void addAIs()
@@ -161,7 +162,7 @@ public class World {
 	public void resume() 
 	{
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }
