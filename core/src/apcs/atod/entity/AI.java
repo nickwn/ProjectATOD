@@ -95,7 +95,7 @@ public class AI extends Entity
 			}
 		if(x > 5 && x < 50)
 			{
-				modelInstance.transform.translate(new Vector3(5,2,0));
+				modelInstance.transform.translate(new Vector3(10,4,0));
 			}
 		if(x > 50 && x < 60)
 			{
@@ -103,6 +103,7 @@ public class AI extends Entity
 			}
 		if(x > 60 && x < 105)
 			{
+				modelInstance.transform.translate(new Vector3(-10,4,0));
 			}
 		if(x > 105 && x < 110)
 			{
