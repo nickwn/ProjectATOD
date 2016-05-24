@@ -17,8 +17,11 @@ public class AI extends Entity
 	private double rof;
 	private Player target;
 	private Vector3 endPosition;
-	private boolean debounce;
-	private float rotation;
+
+	private int FinishManuever;
+	private int x = 2;
+	private float rotation = 0;
+
 	
 	public AI(Vector3 pos) 
 	{
@@ -53,16 +56,18 @@ public class AI extends Entity
 		
 		rotation = 3f;
 		//pos = new Vector3(1f, 1f, 1f); //will fix this later
-		endPosition = new Vector3(-1f, -1f, -1f); //same
+		//endPosition = new Vector3(-1f, -1f, -1f); //same
 		//target = worldInfo.getInstanceOf(Player);
 	}
 	
 	public void update() 
 	{
-		
-		// this.getPosition().lerp(endPosition, 1f);
-		flyTowardsPlayer();
-		doABarrelRoll();
+
+
+		dodge2(FinishManuever);
+		FinishManuever++;
+
+
 	}
 	
 	public void dispose()
@@ -89,25 +94,46 @@ public class AI extends Entity
 		modelInstance.transform.translate(new Vector3(0f, -10f, 10f));
 	}
 	
-	private void dodge1()
+	private void dodge1(int x)
 	{
-		// dodge stuff
-		
-		modelInstance.transform.translate(new Vector3(0f, 0f, 0f));
-		
+
+		modelInstance.transform.rotate(0, 0, 1,(5));
+
 	}
 	
-	private void dodge2()
+	private void dodge2(int x)
 	{
-		//do cool dodge maneuver
-		modelInstance.transform.setToRotation(pos.Z, 3f);
+
+		if(x > 0 && x < 5)
+			{
+				modelInstance.transform.rotate(0, 0, 1,-5);
+			}
+		if(x > 5 && x < 50)
+			{
+				modelInstance.transform.translate(new Vector3(10,4,0));
+			}
+		if(x > 50 && x < 60)
+			{
+				modelInstance.transform.rotate(0, 0, 1,5);
+			}
+		if(x > 60 && x < 105)
+			{
+				modelInstance.transform.translate(new Vector3(-10,4,0));
+			}
+		if(x > 105 && x < 110)
+			{
+				modelInstance.transform.rotate(0, 0, 1,-5);
+			}
+
 	}
 	
-	private void doABarrelRoll()
+	private void doABarrelRoll(int x)
 	{
+
 		modelInstance.transform.rotate(pos.Z, rotation);
 		//rotation+= 2;
 		//mostly works
+
 	}
 	
 	private void flyTowardsPlayer()
