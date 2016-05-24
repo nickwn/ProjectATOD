@@ -6,15 +6,21 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.ModelLoader;
 import com.badlogic.gdx.graphics.g3d.Model;
+import com.badlogic.gdx.graphics.g3d.loader.G3dModelLoader;
 import com.badlogic.gdx.graphics.g3d.loader.ObjLoader;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.BoundingBox;
 import com.badlogic.gdx.math.collision.Ray;
+<<<<<<< HEAD
+=======
+import com.badlogic.gdx.utils.UBJsonReader;
+>>>>>>> fe85903eae532e3544ef487e0a9e47704b350689
 
-public final class EntityUtils {
+public final class EntityUtils 
+{
 	private static AssetManager assets = new AssetManager();
-
+	
 	private EntityUtils() {
 
 	}
@@ -24,17 +30,11 @@ public final class EntityUtils {
 	 * 
 	 * @return the specified Model with the given filename.
 	 */
-	public static Model loadModel(String filename) {
+	public static Model loadModel(String filename) 
+	{
 		assets.load(filename, Model.class);
 
-		while (!assets.update()) {
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-
+		assets.finishLoading();
 		return assets.get(filename, Model.class);
 	}
 
