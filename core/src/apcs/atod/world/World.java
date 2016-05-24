@@ -74,7 +74,7 @@ public class World {
 	{
 		for(int i = 0; i < 5; i++)
 		{
-			Vector3 pos = new Vector3((i-3)*10, 0, -20);
+			Vector3 pos = new Vector3((i-3)*10, 0, -20); //could also use setToRandomPosition()
 			AI temp = new AI(pos);
 			temp.setup();
 			temp.setWorldInfo(worldInfo);

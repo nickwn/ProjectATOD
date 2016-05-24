@@ -17,12 +17,14 @@ public class AI extends Entity
 	private double rof;
 	private Player target;
 	private Vector3 endPosition;
+	private boolean debounce;
+	private float rotation;
 	
 	public AI(Vector3 pos) 
 	{
 		super(pos);
 		// TODO Auto-generated constructor stub
-		//doABarrelRoll();
+		
 		//flyTowardsPlayer();
 	}
 	/*
@@ -48,6 +50,8 @@ public class AI extends Entity
 		damage = 1;
 		hp = Math.random() * 10;
 		rof = 1;
+		
+		rotation = 3f;
 		//pos = new Vector3(1f, 1f, 1f); //will fix this later
 		endPosition = new Vector3(-1f, -1f, -1f); //same
 		//target = worldInfo.getInstanceOf(Player);
@@ -57,7 +61,8 @@ public class AI extends Entity
 	{
 		
 		// this.getPosition().lerp(endPosition, 1f);
-		die();
+		flyTowardsPlayer();
+		doABarrelRoll();
 	}
 	
 	public void dispose()
@@ -86,24 +91,34 @@ public class AI extends Entity
 	
 	private void dodge1()
 	{
-		// do cool dodge maneuver
+		// dodge stuff
+		
+		modelInstance.transform.translate(new Vector3(0f, 0f, 0f));
 		
 	}
 	
 	private void dodge2()
 	{
 		//do cool dodge maneuver
+		modelInstance.transform.setToRotation(pos.Z, 3f);
 	}
 	
 	private void doABarrelRoll()
 	{
-		modelInstance.transform.setToRotation(Vector3.X, 0.12f);
+		modelInstance.transform.rotate(pos.Z, rotation);
+		//rotation+= 2;
+		//mostly works
 	}
 	
 	private void flyTowardsPlayer()
 	{
 		// fly towards the player
-		modelInstance.transform.translate(new Vector3(0f, 0f, 10f));
+		
+		
+			modelInstance.transform.translate(new Vector3(0f, 0f, 10f));
+			//modelInstance.transform.rotate(pos.Z, rotation);
+		
+		
 		//pos.lerp(pos.add(target.getPosition()), 1f); //change to where we will actually put player
 	}
 
