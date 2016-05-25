@@ -51,7 +51,7 @@ public class AI extends Entity
 		modelInstance = new ModelInstance(model, pos);
 		speed = Math.random() * 5;
 		damage = 1;
-		hp = Math.random() * 10;
+		hp = Math.random() * 10 + 10;
 		rof = 1;
 		
 		rotation = 3f;
@@ -65,7 +65,7 @@ public class AI extends Entity
 
 		if (hp > 0)
 		{
-			dodge2(FinishManuever);
+			dodge4(FinishManuever);
 			FinishManuever++;
 		}
 		else
@@ -125,6 +125,44 @@ public class AI extends Entity
 				modelInstance.transform.rotate(0, 0, 1,-5);
 			}
 
+	}
+	private void dodge3(int x)
+	{
+
+		if(x > 0 && x < 5)
+			{
+				modelInstance.transform.rotate(0, 0, 1, 5);
+			}
+		if(x > 5 && x < 50)
+			{
+				modelInstance.transform.translate(new Vector3(-10,4,0));
+			}
+		if(x > 50 && x < 60)
+			{
+				modelInstance.transform.rotate(0, 0, 1,-5);
+			}
+		if(x > 60 && x < 105)
+			{
+				modelInstance.transform.translate(new Vector3(10,4,0));
+			}
+		if(x > 105 && x < 110)
+			{
+				modelInstance.transform.rotate(0, 0, 1,5);
+			}
+
+	}
+	private void dodge4 (int x)
+	{
+		if(x > 0 && x < 50)
+		{
+			modelInstance.transform.rotate(1,0,0,-5);
+			modelInstance.transform.translate(new Vector3(0,40,50));
+		}
+		if(x > 50 && x < 60)
+		{
+			modelInstance.transform.rotate(1,0,0,-10);
+			modelInstance.transform.translate(new Vector3(0,10,10));
+		}
 	}
 	
 	private void doABarrelRoll(int x)
