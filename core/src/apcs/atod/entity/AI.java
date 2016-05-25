@@ -17,7 +17,7 @@ public class AI extends Entity
 	private double rof;
 	private Player target;
 	private Vector3 endPosition;
-
+	private int caseNum;
 	private int finishManuever;
 	private int x = 2;
 	private float rotation;
@@ -53,7 +53,7 @@ public class AI extends Entity
 		damage = 1;
 		hp = Math.random() * 10 + 10;
 		rof = 1;
-		
+		caseNum = 0;
 		rotation = 3f;
 		//pos = new Vector3(1f, 1f, 1f); //will fix this later
 		//endPosition = new Vector3(-1f, -1f, -1f); //same
@@ -67,15 +67,29 @@ public class AI extends Entity
 		{
 			//dodge2(FinishManuever);
 			//FinishManuever++;
-			int caseNum = (int) (Math.random() * 5);
+			if (finishManuever == 0)
+				caseNum = (int) (1 + Math.random() * 6);
 			
 			switch(caseNum)
 			{
-			case 0 :
-				flyTowardsPlayer();
-				break;
 			case 1 :
+				flyTowardsPlayer(finishManuever);
+				break;
+			case 2 :
 				doABarrelRoll(finishManuever);
+				break;
+			case 3 :
+				dodge1(finishManuever);
+				break;
+			case 4 :
+				dodge2(finishManuever);
+				break;
+			case 5 :
+				dodge3(finishManuever);
+				break;
+			case 6 :
+				dodge4(finishManuever);
+				break;
 			}
 
 		}
@@ -186,10 +200,13 @@ public class AI extends Entity
 			finishManuever = 0;
 	}
 	
-	private void flyTowardsPlayer()
+	private void flyTowardsPlayer(int x)
 	{
 		// fly towards the player
-		modelInstance.transform.translate(new Vector3(0f, 0f, 10f));	
+		if (x < 60)
+			modelInstance.transform.translate(new Vector3(0f, 0f, 10f));
+		else
+			finishManuever = 0;
 	}
 
 }
