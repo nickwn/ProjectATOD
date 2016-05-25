@@ -94,7 +94,7 @@ public class AI extends Entity
 
 		}
 		else
-			die();
+			die(finishManuever);
 
 	}
 	
@@ -114,15 +114,18 @@ public class AI extends Entity
 		hp -= 1;
 	}
 	
-	private void die()
-	{		
-		modelInstance.transform.translate(new Vector3(0f, -10f, 10f));
+	private void die(int x)
+	{
+		if (x < 100)
+			modelInstance.transform.translate(new Vector3(0f, -10f, 10f));
+		else
+			this.dispose();
 	}
 	
 	private void dodge1(int x)
 	{
 
-		modelInstance.transform.rotate(0, 0, 1,(5));
+		//modelInstance.transform.rotate(0, 0, 1,(5));
 
 	}
 	
@@ -149,9 +152,10 @@ public class AI extends Entity
 			{
 				modelInstance.transform.rotate(0, 0, 1,-5);
 			}
+		finishManuever++;
 		if (x >= 110)
 			finishManuever = 0;
-
+		
 	}
 	private void dodge3(int x)
 	{
@@ -176,7 +180,9 @@ public class AI extends Entity
 			{
 				modelInstance.transform.rotate(0, 0, 1,5);
 			}
-
+		finishManuever++;
+		if (x >= 110)
+			finishManuever = 0;
 	}
 	private void dodge4 (int x)
 	{
@@ -190,12 +196,18 @@ public class AI extends Entity
 			modelInstance.transform.rotate(1,0,0,-10);
 			modelInstance.transform.translate(new Vector3(0,10,80));
 		}
+		finishManuever++;
+		if (x >= 60)
+			finishManuever = 0;
 	}
 	
 	private void doABarrelRoll(int x)
 	{
 		if (x > 0 && x < 50)
+		{
 			modelInstance.transform.rotate(pos.Z, rotation);
+			finishManuever++;
+		}
 		else
 			finishManuever = 0;
 	}
@@ -204,7 +216,10 @@ public class AI extends Entity
 	{
 		// fly towards the player
 		if (x < 60)
+		{
 			modelInstance.transform.translate(new Vector3(0f, 0f, 10f));
+			finishManuever++;
+		}
 		else
 			finishManuever = 0;
 	}
