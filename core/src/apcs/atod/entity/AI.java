@@ -153,15 +153,15 @@ public class AI extends Entity
 	}
 	private void dodge4 (int x)
 	{
-		if(x > 0 && x < 50)
+		if(x > 0 && x < 45)
 		{
 			modelInstance.transform.rotate(1,0,0,-5);
 			modelInstance.transform.translate(new Vector3(0,40,50));
 		}
-		if(x > 50 && x < 60)
+		if(x > 45 && x < 60)
 		{
 			modelInstance.transform.rotate(1,0,0,-10);
-			modelInstance.transform.translate(new Vector3(0,10,10));
+			modelInstance.transform.translate(new Vector3(0,10,80));
 		}
 	}
 	
