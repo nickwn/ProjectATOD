@@ -20,7 +20,7 @@ public class AI extends Entity
 
 	private int FinishManuever;
 	private int x = 2;
-	private float rotation = 0;
+	private float rotation;
 
 	
 	public AI(Vector3 pos) 
@@ -63,10 +63,13 @@ public class AI extends Entity
 	public void update() 
 	{
 
-
-		dodge2(FinishManuever);
-		FinishManuever++;
-
+		if (hp > 0)
+		{
+			dodge2(FinishManuever);
+			FinishManuever++;
+		}
+		else
+			die();
 
 	}
 	
@@ -87,10 +90,7 @@ public class AI extends Entity
 	}
 	
 	private void die()
-	{
-		//fall to the ground
-		//pos.lerp(new Vector3((pos.x / 2) - pos.x, 0 - pos.y, 0), 1f);
-		//get x, y, and z values and use in Matrix4
+	{		
 		modelInstance.transform.translate(new Vector3(0f, -10f, 10f));
 	}
 	
@@ -129,23 +129,13 @@ public class AI extends Entity
 	
 	private void doABarrelRoll(int x)
 	{
-
 		modelInstance.transform.rotate(pos.Z, rotation);
-		//rotation+= 2;
-		//mostly works
-
 	}
 	
 	private void flyTowardsPlayer()
 	{
 		// fly towards the player
-		
-		
-			modelInstance.transform.translate(new Vector3(0f, 0f, 10f));
-			//modelInstance.transform.rotate(pos.Z, rotation);
-		
-		
-		//pos.lerp(pos.add(target.getPosition()), 1f); //change to where we will actually put player
+		modelInstance.transform.translate(new Vector3(0f, 0f, 10f));	
 	}
 
 }
