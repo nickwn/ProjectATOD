@@ -18,7 +18,7 @@ public class AI extends Entity
 	private Player target;
 	private Vector3 endPosition;
 
-	private int FinishManuever;
+	private int finishManuever;
 	private int x = 2;
 	private float rotation;
 
@@ -65,8 +65,19 @@ public class AI extends Entity
 
 		if (hp > 0)
 		{
-			dodge4(FinishManuever);
-			FinishManuever++;
+			//dodge2(FinishManuever);
+			//FinishManuever++;
+			int caseNum = (int) (Math.random() * 5);
+			
+			switch(caseNum)
+			{
+			case 0 :
+				flyTowardsPlayer();
+				break;
+			case 1 :
+				doABarrelRoll(finishManuever);
+			}
+
 		}
 		else
 			die();
@@ -124,6 +135,8 @@ public class AI extends Entity
 			{
 				modelInstance.transform.rotate(0, 0, 1,-5);
 			}
+		if (x >= 110)
+			finishManuever = 0;
 
 	}
 	private void dodge3(int x)
@@ -167,7 +180,10 @@ public class AI extends Entity
 	
 	private void doABarrelRoll(int x)
 	{
-		modelInstance.transform.rotate(pos.Z, rotation);
+		if (x > 0 && x < 50)
+			modelInstance.transform.rotate(pos.Z, rotation);
+		else
+			finishManuever = 0;
 	}
 	
 	private void flyTowardsPlayer()
