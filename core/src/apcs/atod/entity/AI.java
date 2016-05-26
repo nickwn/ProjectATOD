@@ -217,7 +217,7 @@ public class AI extends Entity
 		// fly towards the player
 		if (x < 60)
 		{
-			modelInstance.transform.translate(new Vector3(0f, 0f, 10f));
+			modelInstance.transform.translate(new Vector3(0f, 10f, 10f));
 			finishManuever++;
 		}
 		else
