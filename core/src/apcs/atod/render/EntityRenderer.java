@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
+import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader;
 import com.badlogic.gdx.utils.Array;
 
 /**
@@ -39,13 +40,17 @@ public class EntityRenderer
 		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, .8f, .8f, 1f, 1f));
 		DirectionalLight dLight = new DirectionalLight().set(.8f, .8f, .8f, -1f, -0.8f, -0.2f);
 		dLight.color.set(.8f, .8f, .8f, .1f);
-	    environment.add(dLight);
+		DirectionalLight dLight2 = new DirectionalLight().set(.8f, .8f, .8f, 0f, -1f, 0f);
+	    //environment.add(dLight);
+	    environment.add(dLight2);
 
 	    camera = worldInfo.getCamera();
 		camera.setup();
 		
 		for(Entity ent: worldInfo.getEntities())
         	modelArr.add(ent.getModelInstance());
+		
+		DefaultShader.defaultCullFace = 0;
 		
 	}
 	

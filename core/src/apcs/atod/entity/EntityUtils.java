@@ -52,7 +52,7 @@ public final class EntityUtils
 	}
 
 	public static void dispose() {
-		assets.dispose();
+//		assets.dispose();
 	}
 
 	/**
