@@ -4,6 +4,7 @@ import apcs.atod.entity.Player;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -48,7 +49,7 @@ public class HUDRenderer {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight());
 		camera.position.set(0, 0, 0);
-		
+
 		img = new Texture(IMG.GUN.getPath());
 		spriteBatch.setProjectionMatrix(camera.combined);
 		spriteBatch.begin();
@@ -85,6 +86,9 @@ public class HUDRenderer {
 		text = new BitmapFont();
 		text.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 		text.draw(spriteBatch, "health: " + myHp, 230, 230);
+		text = new BitmapFont();
+		text.setColor(Color.RED);
+		text.draw(spriteBatch, "x bullets left before reload", -105, 220);
 		spriteBatch.end();
 	}
 
