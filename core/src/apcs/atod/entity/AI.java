@@ -59,7 +59,7 @@ public class AI extends Entity
 
 		caseNum = 0;
 
-		rotation = 3f;
+		rotation = 20f;
 		finishManuever = 0;
 		//pos = new Vector3(1f, 1f, 1f); //will fix this later
 		//endPosition = new Vector3(-1f, -1f, -1f); //same
