@@ -75,7 +75,7 @@ public class AI extends Entity
 			//dodge2(FinishManuever);
 			//FinishManuever++;
 			if (finishManuever == 0)
-				caseNum = (int) (1 + Math.random() * 6);
+				caseNum = (int) (1 + Math.random() * 7);
 			finishManuever++;
 			switch(caseNum)
 			{
