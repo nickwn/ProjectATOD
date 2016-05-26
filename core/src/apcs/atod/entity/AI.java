@@ -76,7 +76,7 @@ public class AI extends Entity
 			//FinishManuever++;
 			if (finishManuever == 0)
 				caseNum = (int) (1 + Math.random() * 6);
-			
+			finishManuever++;
 			switch(caseNum)
 			{
 			case 1 :
@@ -97,6 +97,8 @@ public class AI extends Entity
 			case 6 :
 				dodge4(finishManuever);
 				break;
+			case 7 :
+				dodge5(finishManuever);
 			}
 
 
@@ -160,7 +162,7 @@ public class AI extends Entity
 			{
 				modelInstance.transform.rotate(0, 0, 1,-5);
 			}
-		finishManuever++;
+		
 		if (x >= 110)
 			finishManuever = 0;
 		
@@ -189,7 +191,7 @@ public class AI extends Entity
 				modelInstance.transform.rotate(0, 0, 1,5);
 			}
 
-		finishManuever++;
+		
 		if (x >= 110)
 			finishManuever = 0;
 
@@ -210,7 +212,7 @@ public class AI extends Entity
 		{
 			finishManuever = 0;
 		}
-		finishManuever++;
+		
 		if (x >= 60)
 			finishManuever = 0;
 	}
@@ -245,7 +247,10 @@ public class AI extends Entity
 	
 	private void doABarrelRoll(int x)
 	{
-		
+		if (x < 60)
+			modelInstance.transform.rotate(pos.Z, rotation);
+		else
+			finishManuever = 0;
 	}
 	
 
@@ -255,7 +260,7 @@ public class AI extends Entity
 		if (x < 60)
 		{
 			modelInstance.transform.translate(new Vector3(0f, 10f, 10f));
-			finishManuever++;
+			
 		}
 		else
 			finishManuever = 0;
