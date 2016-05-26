@@ -19,7 +19,7 @@ public class AI extends Entity
 	private Vector3 endPosition;
 	private int caseNum;
 	private int finishManuever;
-	private int x = 2;
+	private int y = 2;
 	private float rotation;
 	private int l = 0;
 	private int m = 0;
