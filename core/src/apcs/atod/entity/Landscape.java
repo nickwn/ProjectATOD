@@ -31,22 +31,24 @@ public class Landscape extends Entity
         modelInstance.materials.get(0).set(ColorAttribute.createDiffuse(new Color(0.253f, 0.135f, 0.057f, 10f)));
         modelInstance.materials.get(1).set(ColorAttribute.createDiffuse(new Color(0f, 0.26f, 0.002f, 1f)));
         modelInstance.materials.get(2).set(ColorAttribute.createDiffuse(Color.WHITE));
-        Node node = modelInstance.getNode(id);
-		
-		//modelInstance = new ModelInstance(model, pos);
-//		Node parent = new Node();
-//		
-//		for(int i = 0; i < 9; i++)
-//		{
-//			Node child = cloneObject(modelInstance.nodes.first());
-//			child.translation.add(new Vector3(i%3, 0, i/3));
-//			parent.addChild(child);
-//		}
-//		
-//		modelInstance.nodes.removeIndex(0);
-//		modelInstance.nodes.add(parent);
-//		
-//		modelInstance.calculateTransforms();
+        
+        
+        Node landscape = new Node();
+        landscape.id = "landscape2";
+        landscape.globalTransform.set(modelInstance.getNode("landscape").globalTransform);
+        landscape.inheritTransform = modelInstance.getNode("landscape").inheritTransform;
+        landscape.isAnimated = modelInstance.getNode("landscape").isAnimated;
+        landscape.localTransform.set(modelInstance.getNode("landscape").localTransform);
+        landscape.parts = modelInstance.getNode("landscape").parts;
+        landscape.rotation.set(modelInstance.getNode("landscape").rotation);
+        landscape.scale.set(modelInstance.getNode("landscape").scale);
+        landscape.translation.set(modelInstance.getNode("landscape").translation);
+        landscape.translation.add(0, 0, 8700);
+        landscape.calculateTransforms(true);
+        
+        
+        modelInstance.nodes.add(landscape);
+       
 	}
 
 	public void update() 
@@ -59,23 +61,5 @@ public class Landscape extends Entity
 	{
 		model.dispose();
 	}
-	
-	 private static <T> T cloneObject(T obj)
-	{
-        try
-        {
-            Object clone = obj.getClass().newInstance();
-            for (Field field : obj.getClass().getDeclaredFields()) {
-                field.setAccessible(true);
-                field.set(clone, field.get(obj));
-            }
-            return (T) clone;
-        }
-        
-        catch(Exception e)
-        {
-            return null;
-        }
-    }
 	
 }
