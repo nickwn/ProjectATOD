@@ -23,6 +23,7 @@ public class World {
 	private EntityRenderer entityRenderer;
 	private HUDRenderer hudRenderer;
 	private Camera camera;
+	private Player player1;
 
 	public World()
 	{
@@ -45,7 +46,9 @@ public class World {
 	private void setupWorld()
 	{
 		entities = new ArrayList<Entity>();
-		entities.add(new Player(Vector3.Zero));
+		Player player1 = new Player(Vector3.Zero);
+		player1.update();
+		entities.add(player1);
 		entities.add(new Landscape(new Vector3(0, -1000, 0)));
 		for(int i = 0; i < 3; i++)
 		{
@@ -140,6 +143,7 @@ public class World {
 			}
 			*/
 			entities.get(i).update();
+			
 				
 		}
 		/*
@@ -164,5 +168,4 @@ public class World {
 		// TODO Auto-generated method stub
 		
 	}
-
 }
