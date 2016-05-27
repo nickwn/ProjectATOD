@@ -10,7 +10,7 @@ public class Player extends Entity
 	static Model model = EntityUtils.loadModel("core/assets/fighterplane/fighterplane.g3db");
 	private double speed;
 	private double damage;
-	private double hp;
+	private int hp;
 	private static double rof;
 	private double score;
 	private long time = System.nanoTime();
@@ -63,7 +63,7 @@ public class Player extends Entity
 		model.dispose();
 	}
 	
-	public double getHealth()
+	public int getHealth()
 	{
 		return hp;
 	}
