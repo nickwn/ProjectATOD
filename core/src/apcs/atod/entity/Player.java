@@ -50,6 +50,7 @@ public class Player extends Entity
 		damage = 1;
 		hp = 10;
 		rof = 1;
+		score = 0;
 		//pos = new Vector3(1f, 1f, 1f); //will fix this later
 		camera = worldInfo.getCamera();
 	}
