@@ -5,6 +5,7 @@ import apcs.atod.entity.Player;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -39,6 +40,7 @@ public class HUDRenderer {
 	BitmapFont text;
 	String scoreText;
 	Player player;
+	FPSLogger fpsLogger;
 	int myHp;
 	boolean shooting, fail;
 
@@ -88,7 +90,7 @@ public class HUDRenderer {
 		text.draw(spriteBatch, "health: " + myHp, 230, 230);
 		text = new BitmapFont();
 		text.setColor(Color.RED);
-		text.draw(spriteBatch, "x bullets left before reload", -105, 220);
+		text.draw(spriteBatch, "FPS: " + Gdx.graphics.getFramesPerSecond(), -300, -220);
 		spriteBatch.end();
 	}
 
