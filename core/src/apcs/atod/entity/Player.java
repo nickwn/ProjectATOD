@@ -3,6 +3,7 @@ package apcs.atod.entity;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.math.collision.Ray;
 
 public class Player extends Entity 
 {
@@ -13,7 +14,10 @@ public class Player extends Entity
 	private static double rof;
 	private double score;
 	private long time = System.nanoTime();
-	
+	//private static final Vector3 rayFrom = new Vector3();
+	//private static final Vector3 rayTo = new Vector3();
+	//private static final ClosestRayResultCallback callback = new ClosestRayResultCallback(rayFrom, rayTo);
+
 /*
 	public Player(double s, double d, double rateoffire, Vector3 initPos) 
 	{
@@ -88,4 +92,11 @@ public class Player extends Entity
 		else 
 			return false;
 	}
+	/*
+	public void shoot()
+	{
+		Camera cam = WorldInfo.getCamera();
+		Ray ray = new Ray(pos, cam.position);
+	}
+	*/
 }
