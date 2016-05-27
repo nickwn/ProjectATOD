@@ -72,15 +72,19 @@ public class AI extends Entity
 			//dodge2(FinishManuever);
 			//FinishManuever++;
 			if (finishManuever == 0)
+<<<<<<< HEAD
 				caseNum = (int) (1 + Math.random() * 14);
+=======
+				caseNum = (int) (1 + Math.random() * 10);
+>>>>>>> origin/master
 			finishManuever++;
 			switch(caseNum)
 			{
 			case 1 :
-				flyTowardsPlayer(finishManuever);
+				dodge8(finishManuever);
 				break;
 			case 2 :
-				doABarrelRoll(finishManuever);
+				dodge7(finishManuever);
 				break;
 			case 3 : case 9 : case 10:
 				dodge1(finishManuever);
@@ -96,8 +100,21 @@ public class AI extends Entity
 				break;
 			case 7 :
 				dodge5(finishManuever);
+<<<<<<< HEAD
 			case 8 :
 				dodge6(finishManuever);
+=======
+				break;
+			case 8 :
+				dodge7(finishManuever);
+				break;
+			case 9 : 
+				dodge8(finishManuever);
+				break;
+			case 10 :
+				dodge9(finishManuever);
+				break;
+>>>>>>> origin/master
 			}
 
 
@@ -133,8 +150,16 @@ public class AI extends Entity
 	
 	private void dodge1(int x)
 	{
-
-		modelInstance.transform.rotate(0, 0, 1,(5));
+		if (x < 50)
+			flyTowardsPlayer();
+		else if(x < 100)
+		{
+			bankLeft();
+			doABarrelRoll();
+		}
+		else
+			finishManuever = 0;
+		
 
 	}
 	
@@ -252,26 +277,92 @@ public class AI extends Entity
 		}
 	}
 	
+	private void dodge7(int x)
+	{
+		if (x < 50)
+			flyTowardsPlayer();
+		else if (x < 100)
+		{
+			down();
+			doABarrelRoll();
+		}
+		else
+			finishManuever = 0;
+	}
+	
+	private void dodge8(int x)
+	{
+		if (x < 50)
+			flyTowardsPlayer();
+		else if (x < 100)
+		{
+			bankLeft();
+			doABarrelRoll();
+		}
+		else
+			finishManuever = 0;
+	}
+	
+	private void dodge9(int x)
+	{
+		if (x < 50)
+			flyTowardsPlayer();
+		else if (x < 100)
+		{
+			bankRight();
+			doABarrelRoll();
+		}
+		else
+			finishManuever = 0;
+	}
 	private void doABarrelRoll(int x)
 	{
-		if (x < 60)
+		if (x < 50)
 			modelInstance.transform.rotate(pos.Z, rotation);
 		else
 			finishManuever = 0;
 	}
 	
-
+	private void doABarrelRoll()
+	{
+		modelInstance.transform.rotate(pos.Z, rotation);
+	}
+	
+	private void flyTowardsPlayer()
+	{
+		modelInstance.transform.translate(new Vector3(0f, 0f, 10f));
+	}
 	private void flyTowardsPlayer(int x)
 	{
 		// fly towards the player
-		if (x < 60)
+		if (x < 50)
 		{
-			modelInstance.transform.translate(new Vector3(0f, 10f, 10f));
+			modelInstance.transform.translate(new Vector3(0f, 0f, 10f));
 			
 		}
 		else
 			finishManuever = 0;
 
 	}
-
+	
+	private void bankUp()
+	{
+		modelInstance.transform.translate(new Vector3(0f, 20f, 10f));
+	}
+	
+	private void down()
+	{
+		modelInstance.transform.translate(new Vector3(0f, -20f, 10f));
+	}
+	
+	private void bankLeft()
+	{
+		modelInstance.transform.translate(new Vector3(20f, 0f, 10f));
+	}
+	
+	private void bankRight()
+	{
+		modelInstance.transform.translate(new Vector3(-20f, 0f, 10f));
+	}
 }
+
