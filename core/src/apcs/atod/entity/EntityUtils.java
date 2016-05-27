@@ -2,6 +2,8 @@ package apcs.atod.entity;
 
 import java.util.ArrayList;
 
+import apcs.atod.render.Camera;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.ModelLoader;
@@ -12,7 +14,6 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.BoundingBox;
 import com.badlogic.gdx.math.collision.Ray;
-
 import com.badlogic.gdx.utils.UBJsonReader;
 
 
@@ -38,13 +39,16 @@ public final class EntityUtils
 	}
 
 	public static Entity raycastHasHit(Vector3 pos, Vector3 direction,
-			ArrayList<Entity> entity) {
-		Ray ray = new Ray(pos, direction);
+			ArrayList<Entity> entity, Camera cam) 
+	{
+		Ray ray = cam.getPerspectiveCamera().getPickRay(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
 		for (Entity e : entity) {
 			BoundingBox out = new BoundingBox();
-			if (Intersector.intersectRayBoundsFast(ray,
-					e.getModelInstance().model.calculateBoundingBox(out))) {
+			e.getModelInstance().calculateBoundingBox(out).mul(e.getModelInstance().transform);
+			if (Intersector.intersectRayBoundsFast(ray, out))
+			{
 				return e;
+				
 			}
 			// e.getModelInstance().model.calculateBoundingBox();
 		}

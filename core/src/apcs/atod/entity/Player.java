@@ -1,5 +1,10 @@
 package apcs.atod.entity;
 
+import java.util.ArrayList;
+
+import apcs.atod.render.Camera;
+
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Vector3;
@@ -13,6 +18,7 @@ public class Player extends Entity
 	private static double rof;
 	private double score;
 	private long time = System.nanoTime();
+	private Camera camera;
 	
 /*
 	public Player(double s, double d, double rateoffire, Vector3 initPos) 
@@ -45,11 +51,25 @@ public class Player extends Entity
 		hp = 10;
 		rof = 1;
 		//pos = new Vector3(1f, 1f, 1f); //will fix this later
+		camera = worldInfo.getCamera();
 	}
 
 	public void update() 
 	{
-		// TODO Auto-generated method stub
+		ArrayList<Entity> ais = new ArrayList<Entity>();
+		Entity hit;
+		for(Entity e: worldInfo.getEntities())
+			if(e instanceof AI)
+				ais.add(e);
+		if(Gdx.input.isTouched())
+		{
+			hit = EntityUtils.raycastHasHit(modelInstance.transform.getTranslation(new Vector3()), camera.getDirection(), ais, worldInfo.getCamera());
+			if(hit != null)
+			{
+				((AI)hit).removeHealth();
+				System.out.println(((AI)hit).getHealth());
+			}
+		}
 		
 	}
 	

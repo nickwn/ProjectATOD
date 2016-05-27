@@ -71,30 +71,30 @@ public class AI extends Entity
 		{
 			dodge5(finishManuever);
 		}
-		//	if (finishManuever == 0)
-			//	caseNum = (int) (1 + Math.random() * 6);
+			if (finishManuever == 0)
+				caseNum = (int) (1 + Math.random() * 6);
 			
-		//	switch(caseNum)
-//			{
-		//	case 1 :
-		//		flyTowardsPlayer(finishManuever);
-		//		break;
-		//	case 2 :
-		//		doABarrelRoll(finishManuever);
-		//		break;
-		//	case 3 :
-		//		dodge1(finishManuever);
-		//		break;
-		//	case 4 :
-		//		dodge2(finishManuever);
-		//		break;
-		//	case 5 :
-		//		dodge3(finishManuever);
-		//		break;
-		//	case 6 :
-		//		dodge4(finishManuever);
-		//		break;
-		//	}
+			switch(caseNum)
+			{
+			case 1 :
+				flyTowardsPlayer(finishManuever);
+				break;
+			case 2 :
+				doABarrelRoll(finishManuever);
+				break;
+			case 3 :
+				dodge1(finishManuever);
+				break;
+			case 4 :
+				dodge2(finishManuever);
+				break;
+			case 5 :
+				dodge3(finishManuever);
+				break;
+			case 6 :
+				dodge4(finishManuever);
+				break;
+			}
 			finishManuever++;
 
 	//	}
@@ -103,10 +103,21 @@ public class AI extends Entity
 
 	}
 	
+	private void doABarrelRoll(int finishManuever2) 
+	{
+		if(x <60)
+			modelInstance.transform.rotate(pos.Z, rotation);
+		else
+			finishManuever = 0;
+		
+	}
+
 	public void dispose()
 	{
 		if(worldInfo.getInstancesOf(AI.class).size()==1)
 			model.dispose();
+		//int idx = worldInfo.getEntities().indexOf(this);
+		worldInfo.getEntities().remove(this);
 	}
 	
 	public double getHealth()
