@@ -104,6 +104,7 @@ public class Player extends Entity
 	{
 		return score;
 	}
+	/*
 	public boolean canfire()
 	{
 		if(System.nanoTime() + rof == time)
@@ -114,6 +115,7 @@ public class Player extends Entity
 		else 
 			return false;
 	}
+	*/
 	/*
 	public void shoot()
 	{
