@@ -39,7 +39,6 @@ public class HUDRenderer {
 	Texture img;
 	BitmapFont text;
 	String scoreText;
-
 	Player player;
 	FPSLogger fpsLogger;
 	int myHp;
@@ -82,7 +81,7 @@ public class HUDRenderer {
 		} else {
 			img = new Texture(IMG.GUN_SHOOTING.getPath());
 			// spriteBatch.setProjectionMatrix(camera.combined);
-			spriteBatch.draw(img, 0, 0);
+			spriteBatch.draw(img, -145, -240);
 		}
 		scoreText = "score: " + score;
 		text.setColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -118,6 +117,5 @@ public class HUDRenderer {
 	public void setShooting(boolean logic) {
 		shooting = logic;
 	}
-
 }
 
