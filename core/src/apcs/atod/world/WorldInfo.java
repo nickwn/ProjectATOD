@@ -52,4 +52,9 @@ public class WorldInfo
 	{
 		return camera;
 	}
+	
+	public HUDRenderer getHUDRenderer()
+	{
+		return hud;
+	}
 }
