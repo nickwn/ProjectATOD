@@ -159,7 +159,7 @@ public class AI extends Entity
 	{
 		if (x < 50)
 			flyTowardsPlayer();
-		else if(x < 100)
+		else if(x < 104)
 		{
 			bankLeft();
 			doABarrelRoll();
@@ -292,7 +292,7 @@ public class AI extends Entity
 	{
 		if (x < 50)
 			flyTowardsPlayer();
-		else if (x < 100)
+		else if (x < 104)
 		{
 			down();
 			doABarrelRoll();
@@ -309,7 +309,7 @@ public class AI extends Entity
 	{
 		if (x < 50)
 			flyTowardsPlayer();
-		else if (x < 100)
+		else if (x < 104)
 		{
 			bankLeft();
 			doABarrelRoll();
@@ -326,7 +326,7 @@ public class AI extends Entity
 	{
 		if (x < 50)
 			flyTowardsPlayer();
-		else if (x < 100)
+		else if (x < 104)
 		{
 			bankRight();
 			doABarrelRoll();
@@ -340,7 +340,7 @@ public class AI extends Entity
 	}
 	private void doABarrelRoll(int x)
 	{
-		if (x < 50)
+		if (x < 43)
 			modelInstance.transform.rotate(pos.Z, rotation);
 		else
 			finishManuever = 0;
@@ -396,14 +396,14 @@ public class AI extends Entity
 	
 	private void flyForward()
 	{
-		modelInstance.transform.translate(new Vector3(0f, 0f, 10f));
+		modelInstance.transform.translate(new Vector3(0f, 0f, 50f));
 	}
 	
 	private void reset(int x)
 	{
-		if (x < 125)
+		if (x < 140)
 			turn();
-		else if (x < 175)
+		else if (x < 164)
 			flyForward();
 		else
 			turn();
