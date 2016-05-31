@@ -159,6 +159,10 @@ public class AI extends Entity
 			bankLeft();
 			doABarrelRoll();
 		}
+		else if (x < 200)
+		{
+			reset(x);
+		}
 		else
 			finishManuever = 0;
 		
@@ -288,6 +292,10 @@ public class AI extends Entity
 			down();
 			doABarrelRoll();
 		}
+		else if (x < 200)
+		{
+			reset(x);
+		}
 		else
 			finishManuever = 0;
 	}
@@ -300,6 +308,10 @@ public class AI extends Entity
 		{
 			bankLeft();
 			doABarrelRoll();
+		}
+		else if (x < 200)
+		{
+			reset(x);
 		}
 		else
 			finishManuever = 0;
@@ -314,11 +326,12 @@ public class AI extends Entity
 			bankRight();
 			doABarrelRoll();
 		}
-		else
+		else if (x < 200)
 		{
-			//respawn behind plane or turn around
-			finishManuever = 0;
+			reset(x);
 		}
+		else
+			finishManuever = 0;
 	}
 	private void doABarrelRoll(int x)
 	{
@@ -372,6 +385,23 @@ public class AI extends Entity
 	
 	private void turn()
 	{
+		modelInstance.transform.rotate(0,2,0,-5);
+		//modelInstance.transform.translate(new Vector3(0,40,50));
+	}
+	
+	private void flyForward()
+	{
+		modelInstance.transform.translate(new Vector3(0f, 0f, 10f));
+	}
+	
+	private void reset(int x)
+	{
+		if (x < 125)
+			turn();
+		else if (x < 175)
+			flyForward();
+		else
+			turn();
 		
 	}
 }
