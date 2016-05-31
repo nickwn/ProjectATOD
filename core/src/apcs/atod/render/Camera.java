@@ -74,8 +74,10 @@ public class Camera implements InputProcessor
 
 	public boolean mouseMoved(int arg0, int arg1) 
 	{
-		int dX = prevX-arg0;
-		int dY = prevY-arg1;
+		int dX = (prevX-arg0);///Gdx.graphics.getWidth();
+		int dY = (prevY-arg1);///Gdx.graphics.getHeight();
+		//dX*=360;
+		//dY*=360;
 		camera.direction.rotate(new Vector3(0,1,0), dX);
 		camera.direction.rotate(new Vector3(1,0,0), dY);
 		//System.out.println(arg0 + " " + arg1);
@@ -99,8 +101,17 @@ public class Camera implements InputProcessor
 
 	public boolean touchDragged(int arg0, int arg1, int arg2) 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		int dX = (prevX-arg0);///Gdx.graphics.getWidth();
+		int dY = (prevY-arg1);///Gdx.graphics.getHeight();
+		//dX*=360;
+		//dY*=360;
+		camera.direction.rotate(new Vector3(0,1,0), dX);
+		camera.direction.rotate(new Vector3(1,0,0), dY);
+		//System.out.println(arg0 + " " + arg1);
+		camera.update();
+		prevX = arg0;
+		prevY = arg1;
+		return true;
 	}
 
 	public boolean touchUp(int arg0, int arg1, int arg2, int arg3) 

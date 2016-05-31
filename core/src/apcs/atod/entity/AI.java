@@ -118,10 +118,21 @@ public class AI extends Entity
 
 	}
 	
+//	private void doABarrelRoll(int finishManuever2) 
+//	{
+//		if(x <60)
+//			modelInstance.transform.rotate(pos.Z, rotation);
+//		else
+//			finishManuever = 0;
+//		
+//	}
+
 	public void dispose()
 	{
 		if(worldInfo.getInstancesOf(AI.class).size()==1)
 			model.dispose();
+		//int idx = worldInfo.getEntities().indexOf(this);
+		worldInfo.getEntities().remove(this);
 	}
 	
 	public double getHealth()
