@@ -33,15 +33,19 @@ public class HUDRenderer {
 			return myPath;
 		}
 	}
-
+	
 	OrthographicCamera camera;
 	SpriteBatch spriteBatch;
 	Texture img;
 	BitmapFont text;
 	String scoreText;
+<<<<<<< HEAD
+	double myHp;
+=======
 	Player player;
 	FPSLogger fpsLogger;
 	int myHp;
+>>>>>>> origin/master
 	boolean shooting, fail;
 
 	private int score;
@@ -116,5 +120,9 @@ public class HUDRenderer {
 	public void setShooting(boolean logic) {
 		shooting = logic;
 	}
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> 3ac0c93230b4074fbbefe0f9c1e53c7ca3261ec4

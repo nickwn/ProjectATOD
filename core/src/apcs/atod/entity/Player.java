@@ -50,7 +50,7 @@ public class Player extends Entity
 		modelInstance = new ModelInstance(model, pos);
 		speed = Math.random() * 5;
 		damage = 1;
-		hp = 10;
+		hp = 100;
 		rof = 1;
 		score = 0;
 		//pos = new Vector3(1f, 1f, 1f); //will fix this later
