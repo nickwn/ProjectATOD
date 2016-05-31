@@ -11,7 +11,7 @@ import com.badlogic.gdx.math.Vector3;
 
 public class Player extends Entity 
 {
-	static Model model = EntityUtils.loadModel("core/assets/fighterplane/fighterplane.g3db");
+	private static Model model = EntityUtils.loadModel("core/assets/fighterplane/fighterplane.g3db");
 	private double speed;
 	private double damage;
 	private double hp;
@@ -19,6 +19,7 @@ public class Player extends Entity
 	private double score;
 	private long time = System.nanoTime();
 	private Camera camera;
+	private boolean isShooting;
 	
 /*
 	public Player(double s, double d, double rateoffire, Vector3 initPos) 
@@ -53,6 +54,7 @@ public class Player extends Entity
 		score = 0;
 		//pos = new Vector3(1f, 1f, 1f); //will fix this later
 		camera = worldInfo.getCamera();
+		isShooting = false;
 	}
 
 	public void update() 
@@ -64,6 +66,7 @@ public class Player extends Entity
 				ais.add(e);
 		if(Gdx.input.isTouched())
 		{
+			toggleShooting();
 			hit = EntityUtils.raycastHasHit(modelInstance.transform.getTranslation(new Vector3()), camera.getDirection(), ais, worldInfo.getCamera());
 			if(hit != null)
 			{
@@ -73,7 +76,11 @@ public class Player extends Entity
 				worldInfo.getHUDRenderer().setScore((int)score);
 			}
 		}
-		
+		else
+		{
+			isShooting = false;
+			worldInfo.getHUDRenderer().setShooting(false);
+		}
 		worldInfo.getHUDRenderer().setHealth((int)hp);
 		
 	}
@@ -81,6 +88,12 @@ public class Player extends Entity
 	public void dispose()
 	{
 		model.dispose();
+	}
+	
+	private void toggleShooting()
+	{
+		isShooting = !isShooting;
+		worldInfo.getHUDRenderer().setShooting(isShooting);
 	}
 	
 	public double getHealth()
