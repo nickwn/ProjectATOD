@@ -123,7 +123,7 @@ public class World {
 		
 		for(int i = 0; i < entities.size(); i++)
 		{
-			/*
+			
 			if(entities.get(i) instanceof Player && ((Player)entities.get(i)).getHealth() <= 0)
 			{
 				if (hudRenderer.retryScreen())
@@ -134,24 +134,25 @@ public class World {
 					setupWorld();
 				}
 			}
+			
 			else if(entities.get(i) instanceof AI)
 			{
 				AICount++;
-				if(((AI)entities.get(i)).getHealth() <= 0)
-					entities.remove(i);
-					i--;
+//				if(((AI)entities.get(i)).getHealth() <= 0)
+//					entities.remove(i);
+//					i--;
 			}
-			*/
+			
 			entities.get(i).update();
 			
 				
 		}
-		/*
+		
 		if(AICount == 0)
 		{
 			addAIs();
 		}
-		*/
+		
 
 		entityRenderer.render();
 		hudRenderer.genericTick();
