@@ -3,6 +3,7 @@ package apcs.atod.entity;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
+
 import java.util.*;
 
 public class AI extends Entity 
@@ -76,7 +77,7 @@ public class AI extends Entity
 				caseNum = (int) (1 + Math.random() * 14);
 
 			finishManuever++;
-			switch(4)
+			switch(caseNum)
 			{
 			case 1 :
 				dodge1(finishManuever);
@@ -126,10 +127,14 @@ public class AI extends Entity
 
 	public void dispose()
 	{
-		if(worldInfo.getInstancesOf(AI.class).size()==1)
+		ArrayList<Entity> ais = new ArrayList<Entity>();
+		for(Entity e: worldInfo.getEntities())
+			if(e instanceof AI)
+				ais.add(e);
+		if(ais.size()==1)
 			model.dispose();
 		//int idx = worldInfo.getEntities().indexOf(this);
-		worldInfo.getEntities().remove(this);
+		//worldInfo.getEntities().remove(this);
 	}
 	
 	public double getHealth()

@@ -75,7 +75,7 @@ public class Player extends Entity
 				((AI)hit).removeHealth();
 				System.out.println(((AI)hit).getHealth());
 				score += 100;
-				worldInfo.getHUDRenderer().setScore((int)score);
+				//worldInfo.getHUDRenderer().setScore((int)score);
 			}
 		}
 		else

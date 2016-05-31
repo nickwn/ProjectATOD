@@ -47,7 +47,7 @@ public class World {
 	{
 		entities = new ArrayList<Entity>();
 		Player player1 = new Player(Vector3.Zero);
-		player1.update();
+		//player1.update();
 		entities.add(player1);
 		entities.add(new Landscape(new Vector3(0, -1000, 0)));
 		for(int i = 0; i < 3; i++)
@@ -138,9 +138,12 @@ public class World {
 			else if(entities.get(i) instanceof AI)
 			{
 				AICount++;
-//				if(((AI)entities.get(i)).getHealth() <= 0)
-//					entities.remove(i);
-//					i--;
+				if(((AI)entities.get(i)).getHealth() <= 0)
+				{
+					entities.get(i).dispose();
+					entities.remove(i);
+					i--;
+				}
 			}
 			
 			entities.get(i).update();
