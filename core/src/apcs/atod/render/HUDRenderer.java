@@ -89,9 +89,6 @@ public class HUDRenderer {
 		text = new BitmapFont();
 		text.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 		text.draw(spriteBatch, "health: " + myHp, 230, 230);
-		text = new BitmapFont();
-		text.setColor(Color.RED);
-		text.draw(spriteBatch, "FPS: " + Gdx.graphics.getFramesPerSecond(), -300, -220);
 		spriteBatch.end();
 	}
 
