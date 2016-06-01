@@ -47,8 +47,8 @@ public class EntityRenderer
 	    camera = worldInfo.getCamera();
 		camera.setup();
 		
-		for(Entity ent: worldInfo.getEntities())
-        	modelArr.add(ent.getModelInstance());
+		//for(Entity ent: worldInfo.getEntities())
+        	//modelArr.add(ent.getModelInstance());
 		
 		DefaultShader.defaultCullFace = 0;
 		
@@ -58,11 +58,16 @@ public class EntityRenderer
 	{
 		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+        //System.out.println(worldInfo.getEntities());
+        for(Entity ent: worldInfo.getEntities())
+        	modelArr.add(ent.getModelInstance());
         
         //modelArr.truncate(worldInfo..size());
         modelBatch.begin(camera.getPerspectiveCamera());
         modelBatch.render(modelArr, environment);
         modelBatch.end();
+        
+        modelArr.clear();
 	}
 	
 	public void dispose()

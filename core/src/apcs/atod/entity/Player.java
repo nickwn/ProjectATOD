@@ -61,7 +61,7 @@ public class Player extends Entity
 
 	public void update() 
 	{
-		/*
+		
 		ArrayList<Entity> ais = new ArrayList<Entity>();
 		Entity hit;
 		for(Entity e: worldInfo.getEntities())
@@ -85,7 +85,7 @@ public class Player extends Entity
 			worldInfo.getHUDRenderer().setShooting(false);
 		}
 		worldInfo.getHUDRenderer().setHealth((int)hp);
-		*/
+		
 	}
 	
 	public void dispose()

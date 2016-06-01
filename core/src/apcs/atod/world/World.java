@@ -140,7 +140,7 @@ public class World {
 				AICount++;
 				if(((AI)entities.get(i)).getHealth() <= 0)
 				{
-					entities.get(i).dispose();
+					//entities.get(i).dispose();
 					entities.remove(i);
 					i--;
 				}
