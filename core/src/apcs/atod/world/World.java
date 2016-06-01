@@ -75,12 +75,11 @@ public class World {
 	
 	private void addAIs()
 	{
-		for(int i = 0; i < 5; i++)
+		for(int i = 0; i < 3; i++)
 		{
-			Vector3 pos = new Vector3((i-3)*10, 0, -20); //could also use setToRandomPosition()
-			AI temp = new AI(pos);
-			temp.setup();
+			AI temp = new AI(new Vector3((i-1)*300, 0, -700));
 			temp.setWorldInfo(worldInfo);
+			temp.setup();
 			entities.add(temp);
 		}
 	}
