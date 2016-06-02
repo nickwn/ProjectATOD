@@ -1,4 +1,4 @@
-package apcs.atod.entity;
+ package apcs.atod.entity;
 
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.*;
@@ -28,7 +28,6 @@ public class AI extends Entity
 	{
 		super(pos);
 		// TODO Auto-generated constructor stub
-		
 		//flyTowardsPlayer();
 	}
 	/*
@@ -52,7 +51,7 @@ public class AI extends Entity
 		modelInstance = new ModelInstance(model, pos);
 		speed = Math.random() * 5;
 		damage = 1;
-		hp = Math.random() * 10 + 10;
+		hp = Math.random() * 9 + 2;
 		rof = 1;
 
 		caseNum = 0;
@@ -77,7 +76,6 @@ public class AI extends Entity
 			//dodge2(FinishManuever);
 			//FinishManuever++;
 			if (finishManuever == 0)
-
 				caseNum = (int) (1 + Math.random() * 14);
 
 			finishManuever++;
@@ -166,19 +164,19 @@ public class AI extends Entity
 	{
 		if (x < 50)
 			flyTowardsPlayer();
-		else if(x < 104)
+		else if(x < 100)
 		{
 			bankLeft();
 			doABarrelRoll();
 		}
-		else if (x < 200)
+		else if (x < 150)
 		{
-			reset(x);
+			flyBackwards();
 		}
-		else
+		else if( x < 200)
+		{
 			finishManuever = 0;
-		
-
+		}
 	}
 	
 	private void dodge2(int x)
@@ -362,17 +360,9 @@ public class AI extends Entity
 	{
 		modelInstance.transform.translate(new Vector3(0f, 0f, 10f));
 	}
-	private void flyTowardsPlayer(int x)
+	private void flyBackwards()
 	{
-		// fly towards the player
-		if (x < 50)
-		{
-			modelInstance.transform.translate(new Vector3(0f, 0f, 10f));
-			
-		}
-		else
-			finishManuever = 0;
-
+			modelInstance.transform.translate(new Vector3(0f, 0f, -10f));
 	}
 	
 	private void bankUp()
@@ -414,7 +404,6 @@ public class AI extends Entity
 			flyForward();
 		else
 			turn();
-		
 	}
 }
 
