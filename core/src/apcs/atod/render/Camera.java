@@ -23,8 +23,9 @@ public class Camera implements InputProcessor
         
         prevX = 0;
         prevY = 90;
-        
+        camController = new CameraInputController(camera);
         Gdx.input.setInputProcessor(this);
+        //Gdx.input.setInputProcessor(camController);
         
 //        camController = new CameraInputController(camera);
 //        camController.target.set(camera.position);

@@ -43,7 +43,7 @@ public class Landscape extends Entity
         landscape.rotation.set(modelInstance.getNode("landscape").rotation);
         landscape.scale.set(modelInstance.getNode("landscape").scale);
         landscape.translation.set(modelInstance.getNode("landscape").translation);
-        landscape.translation.add(0, 0, 8700);
+        landscape.translation.add(0, 0, 17000);
         landscape.calculateTransforms(true);
         
         
@@ -53,7 +53,7 @@ public class Landscape extends Entity
 
 	public void update() 
 	{
-
+		//if(modelInstance.transform.getTranslation(new Vec3()))
 		modelInstance.transform.translate(new Vector3(0,0,-10));
 	}
 	
