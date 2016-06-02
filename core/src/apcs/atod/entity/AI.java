@@ -56,9 +56,13 @@ public class AI extends Entity
 		rof = 1;
 
 		caseNum = 0;
-
+		
 		rotation = 20f;
 		finishManuever = 0;
+		ArrayList<Entity> list = worldInfo.getEntities();
+		for (Entity e : list)
+			if (e instanceof Player)
+				target = (Player)e;
 		//pos = new Vector3(1f, 1f, 1f); //will fix this later
 		//endPosition = new Vector3(-1f, -1f, -1f); //same
 		//target = worldInfo.getInstanceOf(Player);
@@ -99,7 +103,6 @@ public class AI extends Entity
 				break;
 			case 7 :
 				dodge7(finishManuever);
-
 				break;
 			case 8 :
 				dodge8(finishManuever);
@@ -109,7 +112,11 @@ public class AI extends Entity
 				break;
 			}
 			
-
+			int case1 = (int) (1 + Math.random() * 100);
+			//int count = 0;
+			//int manuver = caseNum;
+			if (case1 < 35 & finishManuever < 20)
+				target.removeHealth();
 		}
 		else
 			die(finishManuever);
