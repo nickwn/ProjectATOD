@@ -46,14 +46,17 @@ public class Landscape extends Entity
         landscape.translation.add(0, 0, 17000);
         landscape.calculateTransforms(true);
         
-        
         modelInstance.nodes.add(landscape);
-       
 	}
 
 	public void update() 
 	{
-		//if(modelInstance.transform.getTranslation(new Vec3()))
+		System.out.println(modelInstance.transform.getTranslation(new Vector3()).z);
+		if(modelInstance.transform.getTranslation(new Vector3()).z <= -17000 )
+		{
+			System.out.println("moving");
+			modelInstance.transform.translate(0, 0, 17000);
+		}
 		modelInstance.transform.translate(new Vector3(0,0,-10));
 	}
 	
