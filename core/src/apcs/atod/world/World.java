@@ -24,6 +24,7 @@ public class World {
 	private HUDRenderer hudRenderer;
 	private Camera camera;
 	private Player player1;
+	private int score;
 
 	public World()
 	{
@@ -70,6 +71,8 @@ public class World {
 		//entityRenderer.setup(worldInfo);
 		hudRenderer.init();
 		entityRenderer.setup(worldInfo);
+		
+		score = 0;
 		
 	}
 	
@@ -128,8 +131,9 @@ public class World {
 				if (hudRenderer.retryScreen())
 				{
 					entityRenderer.dispose();
-					for(Entity ent: entities)
-						ent.dispose();
+					entities.clear();
+//					for(Entity ent: entities)
+//						ent.dispose();
 					setupWorld();
 				}
 			}
@@ -142,6 +146,8 @@ public class World {
 					//entities.get(i).dispose();
 					entities.remove(i);
 					i--;
+					score += 100;
+					hudRenderer.setScore(score);
 				}
 			}
 			

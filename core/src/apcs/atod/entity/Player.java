@@ -51,7 +51,7 @@ public class Player extends Entity
 		modelInstance = new ModelInstance(model, pos);
 		speed = Math.random() * 5;
 		damage = 1;
-		hp = 100;
+		hp = 50;
 		rof = 1;
 		score = 0;
 		//pos = new Vector3(1f, 1f, 1f); //will fix this later
@@ -61,7 +61,7 @@ public class Player extends Entity
 
 	public void update() 
 	{
-		
+		//hp-=1;
 		ArrayList<Entity> ais = new ArrayList<Entity>();
 		Entity hit;
 		for(Entity e: worldInfo.getEntities())
@@ -75,7 +75,7 @@ public class Player extends Entity
 			{
 				((AI)hit).removeHealth();
 				System.out.println(((AI)hit).getHealth());
-				score += 100;
+				//score += 100;
 				//worldInfo.getHUDRenderer().setScore((int)score);
 			}
 		}

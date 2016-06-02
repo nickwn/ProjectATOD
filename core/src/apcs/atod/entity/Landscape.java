@@ -51,10 +51,10 @@ public class Landscape extends Entity
 
 	public void update() 
 	{
-		System.out.println(modelInstance.transform.getTranslation(new Vector3()).z);
+		//System.out.println(modelInstance.transform.getTranslation(new Vector3()).z);
 		if(modelInstance.transform.getTranslation(new Vector3()).z <= -17000 )
 		{
-			System.out.println("moving");
+			//System.out.println("moving");
 			modelInstance.transform.translate(0, 0, 17000);
 		}
 		modelInstance.transform.translate(new Vector3(0,0,-10));

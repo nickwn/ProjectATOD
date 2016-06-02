@@ -72,8 +72,9 @@ public class HUDRenderer {
 		spriteBatch.setProjectionMatrix(camera.combined);
 		spriteBatch.begin();
 		if (fail == true) {
-			spriteBatch.draw(new Texture(IMG.GAME_OVER.getPath()), 0, 0);
+			spriteBatch.draw(new Texture(IMG.GAME_OVER.getPath()), -400, -300);
 			spriteBatch.end();
+			return;
 		}
 		if (shooting == false) {
 			img = new Texture(IMG.GUN.getPath());
@@ -95,7 +96,7 @@ public class HUDRenderer {
 	public boolean retryScreen() {
 		// img = new Texture(IMG.GAME_OVER.getPath());
 		fail = true;
-		if (Gdx.input.isButtonPressed(Input.Keys.SPACE)) {
+		if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
 			return true;
 		}
 		return false;
