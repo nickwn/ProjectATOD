@@ -108,7 +108,7 @@ public class AI extends Entity
 				dodge9(finishManuever);
 				break;
 			}
-
+			
 
 		}
 		else
