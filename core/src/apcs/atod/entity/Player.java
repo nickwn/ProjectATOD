@@ -18,27 +18,12 @@ public class Player extends Entity
 	private int hp;
 	private static double rof;
 	private double score;
-
 	private Camera camera;
 	private boolean isShooting;
-	
-
-/*
-	public Player(double s, double d, double rateoffire, Vector3 initPos) 
-	{
-		rof = rateoffire;
-		speed = s;
-		damage = d;
-		hp = 10.0;
-		pos = initPos;
-		score = 0;
-	}
-*/
 	
 	public Player(Vector3 pos) 
 	{
 		super(pos);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public static double getrof()
@@ -47,21 +32,18 @@ public class Player extends Entity
 	}
 	public void setup() 
 	{
-		// TODO Auto-generated method stub
 		modelInstance = new ModelInstance(model, pos);
 		speed = Math.random() * 5;
 		damage = 1;
 		hp = 100;
 		rof = 1;
 		score = 0;
-		//pos = new Vector3(1f, 1f, 1f); //will fix this later
 		camera = worldInfo.getCamera();
 		isShooting = false;
 	}
 
 	public void update() 
 	{
-		//hp-=1;
 		ArrayList<Entity> ais = new ArrayList<Entity>();
 		Entity hit;
 		for(Entity e: worldInfo.getEntities())
@@ -75,8 +57,6 @@ public class Player extends Entity
 			{
 				((AI)hit).removeHealth();
 				System.out.println(((AI)hit).getHealth());
-				//score += 100;
-				//worldInfo.getHUDRenderer().setScore((int)score);
 			}
 		}
 		else
@@ -118,23 +98,4 @@ public class Player extends Entity
 	{
 		return score;
 	}
-	/*
-	public boolean canfire()
-	{
-		if(System.nanoTime() + rof == time)
-		{
-			time = System.nanoTime();
-			return true;
-		}
-		else 
-			return false;
-	}
-	*/
-	/*
-	public void shoot()
-	{
-		Camera cam = WorldInfo.getCamera();
-		Ray ray = new Ray(pos, cam.position);
-	}
-	*/
 }
