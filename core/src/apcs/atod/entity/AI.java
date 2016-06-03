@@ -209,28 +209,38 @@ public class AI extends Entity
 			modelInstance.transform.rotate(1,0,0,-10);
 			modelInstance.transform.translate(new Vector3(0,10,70));
 		}
-		if (x >= 70)
+		if(x > 70 && x < 80)
+		{
+			modelInstance.transform.rotate(0,0,1,10);
+			modelInstance.transform.translate(new Vector3(0,0,85));
+		}
+		if (x >= 80)
 			finishManuever = 0;
 	}
 	private void dodge5 (int x)
 	{
-		if (x > 0 && x < 10)
-		{
-			modelInstance.transform.rotate(0,0,1,10);
-		}
-		if(x > 10 && x < 55)
-		{
-			modelInstance.transform.rotate(1,0,0,-5);
-			modelInstance.transform.translate(new Vector3(0,40,50));
-		}
-		if(x > 55 && x < 70)
-		{
-			modelInstance.transform.rotate(1,0,0,-10);
-			modelInstance.transform.translate(new Vector3(0,10,70));
-		}
-		if (x >= 70)
-			finishManuever = 0;
+	if (x > 0 && x < 10)
+	{
+		modelInstance.transform.rotate(0,0,1,10);
 	}
+	if(x > 10 && x < 55)
+	{
+		modelInstance.transform.rotate(1,0,0,-5);
+		modelInstance.transform.translate(new Vector3(0,40,50));
+	}
+	if(x > 55 && x < 70)
+	{
+		modelInstance.transform.rotate(1,0,0,-10);
+		modelInstance.transform.translate(new Vector3(0,10,70));
+	}
+	if(x > 70 && x < 80)
+	{
+		modelInstance.transform.rotate(0,0,1,-10);
+		modelInstance.transform.translate(new Vector3(0,0,85));
+	}
+	if (x >= 80)
+		finishManuever = 0;
+}
 	
 	private void dodge6(int x)
 	{
@@ -244,7 +254,11 @@ public class AI extends Entity
 			modelInstance.transform.rotate(1,0,0,-10);
 			modelInstance.transform.translate(new Vector3(0,10,70));
 		}
-		if (x >= 60)
+		if(x > 60 && x < 70)
+		{
+			modelInstance.transform.translate(new Vector3(0,0,85));
+		}
+		if (x >= 70)
 		{
 			finishManuever = 0;
 		}
@@ -261,7 +275,7 @@ public class AI extends Entity
 		}
 		else if (x < 200)
 		{
-			reset(x);
+			flyBackwards();
 		}
 		else
 			finishManuever = 0;
@@ -278,7 +292,7 @@ public class AI extends Entity
 		}
 		else if (x < 200)
 		{
-			reset(x);
+			flyBackwards();
 		}
 		else
 			finishManuever = 0;
@@ -295,7 +309,7 @@ public class AI extends Entity
 		}
 		else if (x < 200)
 		{
-			reset(x);
+			flyBackwards();
 		}
 		else
 			finishManuever = 0;
@@ -344,7 +358,8 @@ public class AI extends Entity
 	
 	private void turn()
 	{
-		modelInstance.transform.rotate(0,2,0,-5);
+		modelInstance.transform.rotate(0,2,1,-5);
+		modelInstance.transform.translate(new Vector3(0f, 0f, 15f));
 	}
 	
 	private void flyForward()
