@@ -18,7 +18,7 @@ public class Camera implements InputProcessor
 		camera = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.position.set(0,10,-10);
         camera.near = 1f;
-        camera.far = 9000f;
+        camera.far = 17000f;
         camera.update();
         
         prevX = 0;

@@ -115,7 +115,7 @@ public class AI extends Entity
 			int case1 = (int) (1 + Math.random() * 100);
 			//int count = 0;
 			//int manuver = caseNum;
-			if (case1 < 35 & finishManuever < 20)
+			if (case1 < 10 && finishManuever < 20)
 				target.removeHealth();
 		}
 		else

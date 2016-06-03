@@ -51,6 +51,7 @@ public class World {
 		//player1.update();
 		entities.add(player1);
 		entities.add(new Landscape(new Vector3(0, -1000, 0)));
+		entities.add(new Skybox(new Vector3(0,0,0)));
 		for(int i = 0; i < 3; i++)
 		{
 			entities.add(new AI(new Vector3((i-1)*300, 0, -700)));
