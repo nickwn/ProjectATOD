@@ -15,7 +15,8 @@ public class AI extends Entity
 	private Player target;
 	private Vector3 endPosition;
 	private int caseNum = 3;
-	private int finishManuever = 1;
+	private
+	int finishManuever = 1;
 	private int y = 2;
 	private float rotation;
 
@@ -296,7 +297,7 @@ public class AI extends Entity
 		else if (x < 104)
 		{
 			bankRight();
-			doABarrelRoll();
+			reverse();
 		}
 		else if (x < 200)
 		{
@@ -365,6 +366,10 @@ public class AI extends Entity
 			flyForward();
 		else
 			turn();
+	}
+	private void reverse()
+	{
+		modelInstance.transform.rotate(pos.Z, -rotation);
 	}
 }
 
