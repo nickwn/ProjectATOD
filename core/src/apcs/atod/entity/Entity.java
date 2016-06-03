@@ -13,7 +13,7 @@ public abstract class Entity
 	protected Vector3 rot;
 	protected ModelInstance modelInstance;
 	protected WorldInfo worldInfo;
-	protected static Model model;
+	//protected static Model model;
 	
 	public Entity(Vector3 pos)
 	{

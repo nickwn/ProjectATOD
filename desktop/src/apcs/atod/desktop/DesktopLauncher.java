@@ -8,10 +8,12 @@ import apcs.atod.world.ATODApp;
 
 
 public class DesktopLauncher {
-	public static void main (String[] arg) {
+	public static void init (boolean fullscreen) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "Project: ATOD";
+		if (fullscreen == true) {
 		config.fullscreen = true;
+		} 
 		new LwjglApplication(new ATODApp(), config);
 	}
 }

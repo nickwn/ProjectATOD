@@ -82,7 +82,13 @@ public class AI extends Entity
 			
 			int case1 = (int) (1 + Math.random() * 100);
 			if (case1 < 30 && finishManuever < 20)
+			{
 				target.removeHealth();
+				BulletLine bulletLine = new BulletLine(modelInstance.transform.getTranslation(new Vector3()), target.getModelInstance().transform.getTranslation(new Vector3()));
+				bulletLine.setWorldInfo(worldInfo);
+				bulletLine.setup();
+				worldInfo.getEntities().add(bulletLine);
+			}
 		}
 		else
 			die(finishManuever);
