@@ -52,7 +52,7 @@ public class AI extends Entity
 		modelInstance = new ModelInstance(model, pos);
 		speed = Math.random() * 5;
 		damage = 1;
-		hp = Math.random() * 10 + 10;
+		hp = 1;
 		rof = 1;
 
 		caseNum = 0;
@@ -115,7 +115,7 @@ public class AI extends Entity
 			int case1 = (int) (1 + Math.random() * 100);
 			//int count = 0;
 			//int manuver = caseNum;
-			if (case1 < 10 && finishManuever < 20)
+			if (case1 < 30 && finishManuever < 20)
 				target.removeHealth();
 		}
 		else

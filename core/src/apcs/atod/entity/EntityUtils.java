@@ -41,7 +41,7 @@ public final class EntityUtils
 	public static Entity raycastHasHit(Vector3 pos, Vector3 direction,
 			ArrayList<Entity> entity, Camera cam) 
 	{
-		Ray ray = cam.getPerspectiveCamera().getPickRay(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2+70);
+		Ray ray = cam.getPerspectiveCamera().getPickRay(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2+65);
 		for (Entity e : entity) {
 			BoundingBox out = new BoundingBox();
 			e.getModelInstance().calculateBoundingBox(out).mul(e.getModelInstance().transform);
