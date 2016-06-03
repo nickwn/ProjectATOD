@@ -3,14 +3,10 @@
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
-
 import java.util.*;
 
 public class AI extends Entity 
 {
-
-	
-
 	public static Model model = EntityUtils.loadModel("core/assets/fighterplane/fighterplane.g3db");
 	private double speed;
 	private double damage;
@@ -19,62 +15,36 @@ public class AI extends Entity
 	private Player target;
 	private Vector3 endPosition;
 	private int caseNum = 3;
-	private int finishManuever = 1;
+	private
+	int finishManuever = 1;
 	private int y = 2;
 	private float rotation;
 
-	
 	public AI(Vector3 pos) 
 	{
 		super(pos);
-		// TODO Auto-generated constructor stub
-		//flyTowardsPlayer();
 	}
-	/*
-	public AI(double s, double d, Vector3 initPos, Vector3 endPos) {
-		
-		speed = s;
-		damage = d;
-		hp = 10;
-		endPosition = endPos;
-		pos = initPos;
-		// random hitpoints generated
-		// for each AI
-	}
-	*/
 	
 	public void setup() 
 	{
-		// TODO Auto-generated method stub
-		// hello
-		//change x y and z coordinates to whatever
 		modelInstance = new ModelInstance(model, pos);
 		speed = Math.random() * 5;
 		damage = 1;
 		hp = 1;
 		rof = 1;
-
 		caseNum = 0;
-		
 		rotation = 20f;
 		finishManuever = 0;
 		ArrayList<Entity> list = worldInfo.getEntities();
 		for (Entity e : list)
 			if (e instanceof Player)
 				target = (Player)e;
-		//pos = new Vector3(1f, 1f, 1f); //will fix this later
-		//endPosition = new Vector3(-1f, -1f, -1f); //same
-		//target = worldInfo.getInstanceOf(Player);
 	}
 	
 	public void update() 
 	{
-
 		if (hp > 0)
 		{
-
-			//dodge2(FinishManuever);
-			//FinishManuever++;
 			if (finishManuever == 0)
 				caseNum = (int) (1 + Math.random() * 14);
 
@@ -111,25 +81,20 @@ public class AI extends Entity
 			}
 			
 			int case1 = (int) (1 + Math.random() * 100);
-			//int count = 0;
-			//int manuver = caseNum;
 			if (case1 < 30 && finishManuever < 20)
+			{
 				target.removeHealth();
+				BulletLine bulletLine = new BulletLine(modelInstance.transform.getTranslation(new Vector3()), target.getModelInstance().transform.getTranslation(new Vector3()));
+				bulletLine.setWorldInfo(worldInfo);
+				bulletLine.setup();
+				worldInfo.getEntities().add(bulletLine);
+			}
 		}
 		else
 			die(finishManuever);
 
 	}
 	
-//	private void doABarrelRoll(int finishManuever2) 
-//	{
-//		if(x <60)
-//			modelInstance.transform.rotate(pos.Z, rotation);
-//		else
-//			finishManuever = 0;
-//		
-//	}
-
 	public void dispose()
 	{
 		ArrayList<Entity> ais = new ArrayList<Entity>();
@@ -138,8 +103,6 @@ public class AI extends Entity
 				ais.add(e);
 		if(ais.size()==1)
 			model.dispose();
-		//int idx = worldInfo.getEntities().indexOf(this);
-		//worldInfo.getEntities().remove(this);
 	}
 	
 	public double getHealth()
@@ -334,7 +297,7 @@ public class AI extends Entity
 		else if (x < 104)
 		{
 			bankRight();
-			doABarrelRoll();
+			reverse();
 		}
 		else if (x < 200)
 		{
@@ -388,7 +351,6 @@ public class AI extends Entity
 	private void turn()
 	{
 		modelInstance.transform.rotate(0,2,0,-5);
-		//modelInstance.transform.translate(new Vector3(0,40,50));
 	}
 	
 	private void flyForward()
@@ -404,6 +366,10 @@ public class AI extends Entity
 			flyForward();
 		else
 			turn();
+	}
+	private void reverse()
+	{
+		modelInstance.transform.rotate(pos.Z, -rotation);
 	}
 }
 

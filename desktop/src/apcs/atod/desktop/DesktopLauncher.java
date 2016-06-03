@@ -13,7 +13,7 @@ public class DesktopLauncher {
 		config.title = "Project: ATOD";
 		if (fullscreen == true) {
 		config.fullscreen = true;
-		}
+		} 
 		new LwjglApplication(new ATODApp(), config);
 	}
 }
